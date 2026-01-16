@@ -1,0 +1,37 @@
+La modularización brinda mucho control a un servicio(proyecto), como encapsular, acceder a otros paquetes.
+
+Para crear un modulo en Java:
+
+New -> Project -> Java Project -> Next:	- Colocar el nombre del proyecto
+										- En la sección Module, marcar la casilla que dice "Create module -info.java.file"
+										- Colocar el nombre del modulo. Ejemplo "com.perezcasallas.service.provider"
+										- Finish
+										
+DIFERENCIA ENTRE UN MODULE Y UN PROYECTO DE JAVA NORMAL.
+
+Que MODULE tiene un archivo llamado module-info.java
+
+module com.perezcasallas.service.provider {
+}
+
+
+Posteriormente, se copian y se pegan los archivos de neustros proyectos Java a la carpeta de modularización.
+
+Por ejemplo si se requiere algo de otro modulo, entonces en el código del archivo module-info.java se define requires para obtener lo que se requiere:
+
+module com.perezcasallas.service.provider {
+	requires XXXXXXXXXX
+}
+
+O
+
+Click derecho -> Properties -> Java Built Path -> Pestaña Projects -> Module Path -> Botón Add.. y luego seleccionar el modulo que se quiere agregar.
+
+Que un modulo esté vinculado con otro, no quiere decir que el modulo vinculado tenga acceso a todo el contenido del otro modulo; para lo cual debe usarse el exports
+
+module com.perezcasallas.service.provider {
+	exports XXXXXXXXXXXXXXX
+}
+
+
+

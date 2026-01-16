@@ -1,0 +1,558 @@
+Un ejemplo de collection es el ArrayList, y también LinkeList, HashTable y Tree
+Otros tipos de collections List, Set, Queue y Map
+
+Sirve para el manejo de complejas estructuras de datos.
+
+****************************************************************************
+************************			LIST			************************
+****************************************************************************
+*Una colección ordenada (también conocida como secuencia). 
+*El usuario de esta interfaz tiene un control preciso sobre en qué parte de la lista se inserta cada elemento
+*El usuario puede acceder a los elementos por su índice entero (posición en la lista) y buscar elementos en la lista.
+*Se preocupa por la posición en la que se encuentra cada objeto.
+*Los elementos se pueden agregar especificando la posición en la que se debe agregar.
+*Si el elemento se agrega sin especificar la posición, se agrega al final.
+
+*Crear e inicializar una lista: Para este caso se está creando una lista inmutable
+jshell> List<String> words = List.of("Apple", "Bat", "Cat");
+words ==> [Apple, Bat, Cat]
+
+*Saber cuantos elementos tiene:
+jshell> words.size()
+$2 ==> 3
+
+*Validar si la lista tiene elementos:
+jshell> words.isEmpty()
+$3 ==> false 	
+
+*Saber el elemento que hay en una determinada posición
+jshell> words.get(2)
+$4 ==> "Cat"
+
+*Saber si una lista tiene un determinado elemento
+jshell> words.contains("Dog");
+$5 ==> false
+
+*Saber en qué posición está un elemento
+jshell> words.indexOf("Cat")
+$6 ==> 2
+
+*Como crear una lista mutable, con ArrayList, Vector o con LinkeList
+
+//ArrayList
+jshell> List<String> wordsArrayList = new ArrayList<String>(words)
+wordsArrayList ==> [Apple, Bat, Cat]
+
+//LinkeList
+jshell> List<String> wordsLinkedList = new LinkedList<String>(words)
+wordsLinkedList ==> [Apple, Bat, Cat]
+
+//Vector
+jshell> List<String> wordsVector = new Vector<String>(words)
+wordsVector ==> [Apple, Bat, Cat]
+
+//Agregar valores a una lista mutable
+jshell> wordsArrayList.add("Dog")
+$10 ==> true
+
+jshell> wordsArrayList
+wordsArrayList ==> [Apple, Bat, Cat, Dog]
+
+//Diferencias entre ArrayList, Vector y LinkedList
+*Debajo de un ArrayList y Vector hay un arreglo,matriz y debajo de LinkedList hay una LinkedList.
+*Para una matriz la adición y eliminación es muy costosa (más dificil) pero accederla es muy rápido.
+*Para una LinkedList agregar o eliminar es mucho más fácil, pero acceder a un elemento en una ubicación específica es un poco más costoso (más dificil)
+
+*En conclusión si se requiere constantemente agregar o eliminar elementos se usaría LinkedList, pero si se quiere acceder constantemente a los elementos es mejor usar ArrayList.
+
+*Vector es la opción más básica para proporcionar sincronización, para asegurarse de que su código sea seguro para subprocesos.
+
+//Más Metodos sobre las listas mutables
+
+*Se puede agregar un elemento en una posición en específico:
+	jshell> wordsArrayList.add(1, "Ball")
+	jshell> wordsArrayList
+	wordsArrayList ==> [Apple, Ball, Bat, Cat]
+
+*Pasar elementos de una lista a otra:
+	jshell> newList
+	newList ==> [Yak, Zebra]
+	
+	jshell> wordsArrayList.addAll(newList)
+	$7 ==> true
+	jshell> wordsArrayList
+	wordsArrayList ==> [Apple, Ball, Bat, Cat, Yak, Zebra]
+	
+*Cambiar el valor(elemento) de una posición en específico:
+	jshell> wordsArrayList.set(1, "Fish")
+	$10 ==> "Ball"
+	jshell> wordsArrayList
+	wordsArrayList ==> [Apple, Fish, Bat, Cat, Yak, Zebra]
+	
+*Eliminarun elemento de una lista:
+	jshell> wordsArrayList.remove(0)
+	$12 ==> "Apple"
+	jshell> wordsArrayList
+	wordsArrayList ==> [Fish, Bat, Cat, Yak, Zebra]
+	
+	jshell> wordsArrayList.remove("Bat")
+	$14 ==> true
+	jshell> wordsArrayList
+	wordsArrayList ==> [Fish, Cat, Yak, Zebra]
+	
+*Iterar un ArrayList:
+jshell> for(int i=0; i < words.size(); i++){
+   ...>     System.out.println(words.get(i));
+   ...> }
+Apple
+Bat
+Cat
+
+jshell> for(String word:words){
+   ...>     System.out.println(word);
+   ...> }
+Apple
+Bat
+Cat
+
+jshell> Iterator wordsIterator = words.iterator();
+wordsIterator ==> java.util.ImmutableCollections$ListItr@2d928643
+jshell> while(wordsIterator.hasNext()){
+   ...>     System.out.println(wordsIterator.next());
+   ...> }
+Apple
+Bat
+Cat
+
+jshell> for(String word:words){
+   ...>     if(word.endsWith("at"))
+   ...>     System.out.println(word);
+   ...> }
+Bat
+Cat
+
+//Caso donde un ciclo for no están efectivo y se usa un iterador
+//El iterador es la mejor forma para eliminar patrones de elementos en una lista
+
+jshell> for(String word:wordsAl){
+   ...>     if(word.endsWith("at")){
+   ...>     wordsAl.remove(word);
+   ...> }
+   ...> }
+   
+ jshell> wordsAl
+wordsAl ==> [Apple, Cat]
+
+jshell> Iterator<String> iterator = wordsAl.iterator();
+iterator ==> java.util.ArrayList$Itr@5025a98f
+
+jshell> while(iterator.hasNext()){
+   ...>     if(iterator.next().endsWith("at")){
+   ...>         iterator.remove();
+   ...>     }
+   ...> }
+   
+jshell> wordsAl
+wordsAl ==> [Apple]
+
+//Las Listas pueden admitir varios tipos de datos
+jshell> List value = List.of("A", 'A', 1, 1.0)
+value ==> [A, A, 1, 1.0]
+
+jshell> value.get(2)
+$12 ==> 1
+
+jshell> value.get(2) instanceof Integer
+$13 ==> true
+
+//Pero si quiero que la Lista permita un solo tipo de datos:
+jshell> List<String> textValues = List.of("Eliam", "Yolis", "Alejo")
+textValues ==> [Eliam, Yolis, Alejo]
+
+jshell> List<Integer> numbers = List.of(12, 7, 24)
+numbers ==> [12, 7, 24]
+
+//Indicar en que posición se encuentra determinado elemento
+jshell> numbers.indexOf(24)
+$16 ==> 2
+
+//Para eliminar elementos de una Lista tipo String, se puede indicar la posición o el contenido que hay en esa posición
+jshell> List<String> textAl = new ArrayList<>(textValues)
+textAl ==> [Eliam, Yolis, Alejo]
+
+jshell> textAl.remove("Alejo")
+$18 ==> true
+
+jshell> textAl.remove(1)
+$19 ==> "Yolis"
+
+jshell> textAl
+textAl ==> [Eliam]
+
+//Para eliminar elementos de una Lista tipo Integer se indica la posición más no el contenido que hay en la posición.
+//Porque si se indica el contenido, la Lista lo interpreta como una posición. Entonces la eliminación se podria hacer así
+jshell> numbersAl.remove(Integer.valueOf(24))
+$4 ==> true
+jshell> numbersAl
+numbersAl ==> [12, 7]
+
+jshell> List<Integer> numbers = List.of(24, 7, 12, 87, 88, 22)
+numbers ==> [24, 7, 12, 87, 88, 22]
+
+//Ordenar un arreglo
+jshell> List<Integer> numbersAl = new ArrayList<>(numbers)
+numbersAl ==> [24, 7, 12, 87, 88, 22]
+
+jshell> Collections.sort(numbersAl)
+
+jshell> numbersAl
+numbersAl ==> [7, 12, 22, 24, 87, 88]
+
+****************************************************************************
+**************************			SET			****************************
+****************************************************************************
+
+La interfaz Set extiende la interfaz Collection.
+
+*Solo puede tener elementos unicos. No puede tener duplicados.
+
+jshell> Set<String> set = Set.of("Apple", "Banana", "Cat")
+set ==> [Cat, Banana, Apple]
+
+jshell> set.add("Apple")
+|  Exception java.lang.UnsupportedOperationException
+|        at ImmutableCollections.uoe (ImmutableCollections.java:142)
+|        at ImmutableCollections$AbstractImmutableCollection.add (ImmutableCollections.java:147)
+|        at (#2:1)
+
+jshell> Set<String> hashset = new HashSet<>(set)			//Con HashSet cambia el orden de los elementos
+hashset ==> [Apple, Cat, Banana]
+
+jshell> hashset.add("Apple")
+$4 ==> false 	
+
+
+*No proporciona acceso posicional.
+
+jshell> hashset.add(2, "Apple")
+|  Error:
+|  method add in interface java.util.Set<E> cannot be applied to given types;
+|    required: java.lang.String
+|    found:    int,java.lang.String
+|    reason: actual and formal argument lists differ in length
+|  hashset.add(2, "Apple")
+|  ^---------^
+
+
+* HashTable - Hashing
+
+-Cada posición se llama package (deposito)
+-Se pueden insertar, eliminar y buscar elementos fácilmente
+
+///		HashSet			///
+
+*Los valores se almacenan de manera aleatoria.
+
+jshell> Set<Integer> numbers = new HashSet<>();
+numbers ==> []
+
+jshell> numbers.add(765432);
+$6 ==> true
+
+jshell> numbers.add(76543);
+$7 ==> true
+
+jshell> numbers.add(7654);
+$8 ==> true
+
+jshell> numbers.add(765);
+$9 ==> true
+
+jshell> numbers.add(76);
+$10 ==> true
+
+jshell> numbers
+numbers ==> [765432, 7654, 76, 765, 76543]
+
+///		LinkedHashSet			///
+
+*Los valores se almacenan en el orden en que se van agregando.
+
+jshell> Set<Integer> numbers = new LinkedHashSet<>();
+numbers ==> []
+
+jshell> numbers.add(765432);
+$13 ==> true
+
+jshell> numbers.add(76543);
+$14 ==> true
+
+jshell> numbers.add(7654);
+$15 ==> true
+
+jshell> numbers.add(765);
+$16 ==> true
+
+jshell> numbers.add(76);
+$17 ==> true
+
+jshell> numbers
+numbers ==> [765432, 76543, 7654, 765, 76]
+
+jshell> numbers.add(7654321);
+$19 ==> true
+
+jshell> numbers
+numbers ==> [765432, 76543, 7654, 765, 76, 7654321]
+
+
+
+****************************************************************************
+**************************			TREE		****************************
+****************************************************************************
+
+-Ayuda alamacenar elementos de manera ordenada.
+-Los elementos más pequeños están a la izquierda y los elementos más grandes hacia la derecha.
+-Se pueden insertar, eliminar y buscar elementos fácilmente
+
+
+///		TreeSet			///
+
+jshell> Set<Integer> numbers = new TreeSet<>();
+numbers ==> []
+
+jshell> numbers.add(765432);
+$22 ==> true
+
+jshell> numbers.add(76543);
+$23 ==> true
+
+jshell> numbers.add(7654);
+$24 ==> true
+
+jshell> numbers.add(765);
+$25 ==> true
+
+jshell> numbers.add(76);
+$26 ==> true
+
+jshell> numbers
+numbers ==> [76, 765, 7654, 76543, 765432]
+
+
+package com.perezcasallas;
+
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class SetRunner {
+
+	public static void main(String[] args) {
+		List<Character> characters = List.of('A', 'Z', 'A', 'B', 'Z', 'F');
+		Set<Character> treeSet = new TreeSet<>(characters);
+		System.out.println(treeSet);
+	}
+
+}
+
+*NavigableSet
+
+jshell> TreeSet<Integer> numbers = new TreeSet<>(Set.of(65,54,34,12,99));
+numbers ==> [12, 34, 54, 65, 99]
+
+jshell> numbers.floor(40)			//Valor <= 40
+$29 ==> 34
+
+jshell> numbers.lower(34)			//Valor < 34
+$32 ==> 12
+
+jshell> numbers.ceiling(40)			//Valor >= 40
+$33 ==> 54
+
+jshell> numbers.higher(54)			//Valor > 54
+$34 ==> 65
+
+jshell> numbers.subSet(20,80)		//Rango de numeros entre
+$35 ==> [34, 54, 65]
+
+jshell> numbers.subSet(34,65)		//Se incluye el limite inferior y se excluye el limite superior
+$36 ==> [34, 54]
+
+jshell> numbers.subSet(34,true,65,true)		//Para incluir tanto el limite inferior como el limite superior
+$37 ==> [34, 54, 65]
+
+jshell> numbers.subSet(34,false,65,false)	//Para excluir tanto el limite inferior como el limite superior
+$38 ==> [54]
+
+jshell> numbers.headSet(50)			//Se imprimen valores menores de
+$39 ==> [12, 34]
+.jshell> numbers.tailSet(50)		//Se imprimen valores mayores que
+$40 ==> [54, 65, 99]
+
+
+****************************************************************************
+**************************			QUEUE		****************************
+****************************************************************************
+Una cola se utiliza cuando desea organizar las cosas en el orden que desea procesarlas.
+También extiende Collection
+Operaciones: Agregar, Ofrecer, Eliminar, Sondear y Mirar
+
+jshell> Queue<String> queue = new PriorityQueue<>();				//Crear una cola
+queue ==> []
+
+jshell> queue.offer("Apple")										//Agregar un elemento
+$42 ==> true
+
+jshell> queue.addAll(List.of("Zebra", "Monkey", "Cat"))
+$43 ==> true
+
+jshell> queue														//Agregar varios elementos
+queue ==> [Apple, Cat, Monkey, Zebra]
+
+jshell> queue.poll()												//Eliminó el primer elemento
+$45 ==> "Apple"
+
+jshell> queue
+queue ==> [Cat, Zebra, Monkey]
+
+
+****************************************************************************
+**************************			MAP			****************************
+****************************************************************************
+
+No amplia la interfaz Collection.
+Se utiliza para almacenar pares clave-valor
+
+HashMap, HashTable, LinkedHashMap y TreeMap.
+
+
+//Crear un Map
+jshell> Map<String, Integer> map = Map.of("A",3,"B",5,"Z",10);
+map ==> {A=3, B=5, Z=10}
+
+//Saber el valor de un elemento en específico
+jshell> map.get("Z")
+$2 ==> 10
+
+//Longitud del map
+jshell> map.size()
+$3 ==> 3
+
+//Saber si el Map está vacío
+jshell> map.isEmpty()
+$4 ==> false
+
+//Validar si el Map tiene una llave en específico
+jshell> map.containsKey("A")
+$5 ==> true
+
+//Validar si el Map tiene un valor en específico
+jshell> map.containsValue(5)
+$7 ==> true
+
+//Obtener todo el juego de llaves
+jshell> map.keySet()
+$8 ==> [A, B, Z]
+
+//Obtener los valores
+jshell> map.values()
+$9 ==> [3, 5, 10]
+
+//Crear un HashMap
+jshell> Map<String, Integer> hashmap = new HashMap<>(map)
+hashmap ==> {A=3, B=5, Z=10}
+
+//Agregar un elemento o cambiar el valor
+jshell> hashmap.put("F",5)
+$11 ==> null
+
+jshell> hashmap
+hashmap ==> {A=3, B=5, Z=10, F=5}
+
+jshell> hashmap.put("Z",11)						//Solo se puede agregar de a 1 elemento
+$13 ==> 10
+
+jshell> hashmap
+hashmap ==> {A=3, B=5, Z=11, F=5}
+
+
+//TreeMap
+jshell> TreeMap<String, Integer> treemap = new TreeMap<>();
+treemap ==> {}
+
+jshell> treemap.put("F",25)
+$2 ==> null
+
+jshell> treemap
+treemap ==> {A=15, B=25, F=25, G=25, L=250, Z=5}
+
+*Se usan los mismos metodos de Tree pero se le adiciona la palabara Key
+
+jshell> treemap.higherKey("B")
+$9 ==> "F"
+
+//Otros metodos
+jshell> treemap.firstEntry()
+$10 ==> A=15
+
+jshell> treemap.lastEntry()
+$11 ==> Z=5
+
+jshell> treemap.subMap("C", "Y")			//Que hay en el Map entre C y Y
+$12 ==> {F=25, G=25, L=250}					//Al igual que el Set se manjea el tema de inckusivos y exclusivos
+
+
+
+//Tips
+*Hash indica que algo está sin clasificar y desordenado.
+*Linked indica que los elementos están vinculados entre si y mantendra el orden en que se inserten los elementos
+*Tree se almacenan en una estructura subyacente de forma ordenada
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

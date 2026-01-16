@@ -1,0 +1,176 @@
+https://github.com/in28minutes/java-a-course-for-beginners/tree/master/51-learn-spring-framework
+
+https://github.com/in28minutes/java-a-course-for-beginners/blob/master/51-learn-spring-framework/01-Step05.md
+
+https://github.com/in28minutes/java-a-course-for-beginners/blob/master/51-learn-spring-framework/step-by-step-code-changes/step-by-step-guide.md
+
+
+Las arquitecturas de aplicaciones han evolucionado continuamente durante las dos últimas décadas:
+
+Web App -> REST API -> Full Stack -> Microservices
+
+
+Se utilizan varios Framework:
+
+Spring -> Spring Boot -> Hibernate -> Spring Security -> Spring Data -> Spring Cloud
+
+
+Los mejores para crear aplicaciones:
+
+1. Spring
+2. Spring Boot
+
+Componentes:
+
+Tight Coupling -> Loose Coupling -> Dependency Injection -> IOC Container -> Application Context -> Spring Beans -> Auto Wiring -> Component Scan
+
+
+Arquitectura:
+
+Web		RESR 	Micro		Full
+App		API		Services	Stack	
+|******		Spring Boot		*****|
+|*****	Spring 	Framework	*****|
+
+///CREAR UN PROYECTO MAVEN///
+https://start.spring.io/
+
+
+ITERACIÓN 1: TIGHT COUPLING
+
+El acoplamiento es una medida del trabajo que supone cambiar algo.
+Acoplamiento estrecho se refiere al minimo trabajo para cambiar algo.
+
+Por ejemplo en el proyecto de ejecución de videojuegos, tenemos que estar cambiando constantemente el código para que se ejecuté un videojuego.
+
+Preguntas para definir el Acoplamiento:
+
+¿Cuánto trabajo implica cambiar algo?
+
+- El acoplamiento es una medida del trabajo que supone cambiar algo.
+- Acoplamiento estrecho se refiere al minimo trabajo para cambiar algo.
+- Por ejemplo en el proyecto de ejecución de videojuegos, la clase GameRunner está estrechamente vinculada a un juego específico.
+	Por lo cual tenemos que estar cambiando constantemente el código para que se ejecuté otro.
+- Queremos poder realizar cambios funcionales con el menor número posible de cambios de código. 
+
+Por Eclipse: 
+
+1. Ubicar el proyecto, ejemplo learn-spring-framework
+2. Ubicar la carpeta src/main/java
+3. Ubicar el paquete, ejemplo com.perezcasallas.learnspringframework
+4. Crear una Clase
+
+
+ITERACIÓN 2: LOOSE COUPLING - INTERFACES
+
+Se quiere:
+								Mario
+GameRunner -> GamingConsole ->	SuperContra
+								PacMan
+								
+Donde GamingConsole es una interfaz que permitirá la ejecución de los videojuegos.
+Donde la clase de diseño GameRunner asocia la interfaz GamingConsole permitiendo ejecutar cualquier juego y ya no está asociado estrictamente a un juego en especifico
+
+Aquí se hizo un acoplamiento flexible.
+
+
+ITERACIÓN 3: DEPENDENCY INJECTION - APPLICATION CONTEXT - SPRING BEANS
+
+En nuestro Proyecto un juego es una Dependencia de la clase GameRunner.
+Y lo que estamos haciendo aquí es inyectar la dependencia en el juego.
+Se crea la clase y se inyecta o se cablea en la clase GameRunner.
+var game = new PacManGame();
+var gameRunner = new GameRuner(game);
+
+Para crear el Spring importar lo siguiente: import org.springframework.context.annotation.Configuration;
+
+
+ITERACIÓN 4: AUTO WIRING
+
+Se puede personalizar el nombre del bean, por ejemplo @Bean(name = "address2")
+
+Otra forma de obtener el bean sería: System.out.println(context.getBean(Person.class));
+
+El Spring permite definir múltiples beans y permite una amplia gama para recuperar los objetos que están siendo gestionados.
+
+Hasta el momento todos los Beans que se han creado son indpendientes:
+
+public String name()
+public int age()
+public Person person()
+public Address address()
+
+Cómo hacer para integrarlos:
+
+	@Bean
+	public Person person2MethodCall() {
+		return new Person(name(), age(), address());
+	}
+
+
+PREGUNTAS:
+
+1.¿Spring Container vs Spring Context vs IOC Container vs Application Context?
+
+Spring Container: Administra Spring beans y su ciclo de vida.
+	
+	1.Bean Factory: Basic Spring Container.
+	
+	2.Application Context: Advance Spring Container con características específicas de la empresa:
+		*Fácil de usar en las aplicaciones Web.
+		*Fácil de internacionalización.
+		*Fácil integración con Spring AOP (Orientes Programming)
+		*Recomendado paea Web Services, Web Applications, REST API y Microservices
+
+2.¿Java Bean vs Spring Bean?
+
+Java Bean: 
+*Es antiguo, 
+*Es poco usado por la parte empresarial, 
+*Requiere mayor implementación de código (definir la clase como Serializable, se debe crear un constructor vacio y se deben crear setter & getters para los atributos).
+
+Spring Bean:
+Así que cualquier cosa que sea gestionada por spring framework es lo que se llama un spring bean.
+Utiliza todo lo de la pregunta 1.
+
+3.¿Cómo puedo listar todos los beans gestionados por spring framework?
+
+Con los siguientes metodos:
+	.getBeanDefinition
+	.getBeanDefinitionCount
+	.getBeanDefinitionNames
+	
+	Ejemplo: Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
+
+
+
+4.¿Qué pasa si hay varios beans coincidentes disponibles?
+
+Este es el caso que tiene la instrucción NombreBean.class y el ejecutar el software falla, porque él no sabe a qué Bean debe dirigirse.
+	Ejemplo: Address.class
+
+Para solucionarlo uno de los beans debe ser primario @Primary y también se puede solucionar usando una calificación @Qualifier
+
+5.Spring gestiona objetos y realiza cableado automático.
+	Pero, ¿no somos nosotros los que escribimos el código para crear objetos?
+	¿Cómo hacer que Spring cree objetos para nosotros?
+		Con @Component se puede lograr
+	
+	
+Spring Container manages Spring beans and their lifecycle 1: Bean Factory: Basic Spring Container 2: Application Context: Advanced Spring Container with enterprise-specific features
+Spring Bean is any Java object that is managed by Spring Framework. Spring uses IOC Container (Bean Factory or Application Context) to manage these objects.
+
+@Bean					WHERE.Se pone en un metodo específico, típicamente en clases de configuración
+						USE.Desarrollador escribe todo el código.
+						AUTOWIRING.Method Call or Method ParameterS
+						QUIEN CREA LOS BEANS.Se escribe le código
+						PARA QUE SE RECOMIENDA.Lógica de negocios personalizada.Creación de instancias de beans para bibliotecas de terceros
+@Component 				Instancia de una clase que será gestionado por SpringFramework
+						WHERE.Solo se puede utilizar en Java Class
+						USE.Muy fácil. Solo agrega una anotación	
+						AUTOWIRING.Field, Setter or Constructor Injection
+						QUIEN CREA LOS BEANS.Spring Framework
+						PARA QUE SE RECOMIENDA.Creación de instancias de beans para su propia aplicación
+Dependency 				Se depende de algo
+Component Scan 			Averigua donde están presente los componentes.
+Dependency Injection	Identifica los beans, sus dependencias y conectarlas entre si

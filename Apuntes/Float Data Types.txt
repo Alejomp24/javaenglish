@@ -1,0 +1,89 @@
+Float Data Types:
+*Float		4 bytes
+*Double		8 bytes
+
+jshell> float f = 24.7F
+f ==> 24.7
+
+jshell> double d = 24.71287
+d ==> 24.71287
+
+Operadores:
++ - * / % ++ --
+
+Convertir de Float a Integer
+jshell> int i = (int) f
+i ==> 24
+*Lo mismo aplica con Double
+
+Convertir de Integer a Float
+jshell> f = (float) i
+f ==> 24.0
+*Lo mismo aplica con Double
+
+Precisión en el Resultado de Numeros Flotantes
+*Se usa la clase inmutable Java llamada BigDecimal
+
+jshell> BigDecimal number1 = new BigDecimal("34.56789876");
+number1 ==> 34.56789876
+
+jshell> BigDecimal number2 = new BigDecimal("34.2234");
+number2 ==> 34.2234
+
+jshell> number1.add(number2);
+$3 ==> 68.79129876
+
+Operaciones de la Clase BigDecimal
+jshell> number1.   //+Tab
+abs(                     add(                     byteValue()              byteValueExact()
+compareTo(               divide(                  divideAndRemainder(      divideToIntegralValue(
+doubleValue()            equals(                  floatValue()             getClass()
+hashCode()               intValue()               intValueExact()          longValue()
+longValueExact()         max(                     min(                     movePointLeft(
+movePointRight(          multiply(                negate(                  notify()
+notifyAll()              plus(                    pow(                     precision()
+remainder(               round(                   scale()                  scaleByPowerOfTen(
+setScale(                shortValue()             shortValueExact()        signum()
+sqrt(                    stripTrailingZeros()     subtract(                toBigInteger()
+toBigIntegerExact()      toEngineeringString()    toPlainString()          toString()
+ulp()                    unscaledValue()          wait(
+
+jshell> BigDecimal number10 = new BigDecimal(24.1987)
+number10 ==> 24.198699999999998766497810720466077327728271484375
+*Cuando no se específican las comillas queda como un tipo Double con todos los decimales.
+jshell> BigDecimal number11 = new BigDecimal("12.2022")
+number11 ==> 12.2022
+*Cuando se especifican las comillas queda con las decimales que le indicamos
+*Se recomienda que cuando se use un numero flotante se use comillas y usar BigDecimal.
+
+Si realmente desea una representación precisa, la forma en que deberíamos hacerlo es usar un String.
+Entonces, use un String, entonces obtendría exactamente el mismo valor representado allí.
+Por lo tanto, siempre que utilice BigDecimals, siempre que obtenga un valor, un valor codificado de forma rígida en un BigDecimal, utilice siempre el constructor String.
+Aquí estamos pasando un String al constructor BigDecimal.
+Si pasa un valor doble a un constructor BigDecimal, definitivamente no obtendrá un resultado preciso.
+En resumen, siempre que intente usar float o double en un cálculo financiero, deténgase y comience a usar BigDecimal, porque eso es más preciso y siempre que esté codificando valores en un BigDecimal, use un String. 
+String te da resultados precisos. No utilice los constructores de coma flotante de BigDecimal.
+
+jshell> BigDecimal number = new BigDecimal("11.5")
+number ==> 11.5
+
+jshell> BigDecimal number2 = new BigDecimal("23.45678")
+number2 ==> 23.45678
+
+jshell> number.add(number2)
+$3 ==> 34.95678
+
+*Se pueden sumar los BigDecimal, pero por ejemplo si se quiere sumar un BigDecimal con un Integer arroja error:
+
+jshell> int i=5
+i ==> 5
+
+jshell> number.add(i)
+|  Error:
+|  incompatible types: int cannot be converted to java.math.BigDecimal
+|  number.add(i)
+
+*Se hace de la siguiente forma:
+
+jshell> number.add(new BigDecimal(i))
+$5 ==> 16.5

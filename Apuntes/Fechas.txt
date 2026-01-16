@@ -1,0 +1,119 @@
+JODA TIME FRAMEWORK
+
+CLases:
+LocalDate
+LocalDateTime
+LocalTime
+
+Se debe importar la clase:
+jshell> import java.time.LocalDate
+o		import java.time.LocalDateTime
+o		import java.time.*
+
+jshell> LocalDate now = LocalDate.now()			//now() es un metodo para traer la fecha actual
+now ==> 2023-05-23
+
+jshell> import java.time.*
+
+jshell> LocalTime hour = LocalTime.now()
+hour ==> 16:11:07.943784900
+
+jshell> LocalDateTime all = LocalDateTime.now()
+all ==> 2023-05-23T16:12:07.076980100
+
+Metodos de LocalDate
+
+jshell> LocalDate today = LocalDate.now()
+today ==> 2023-05-23
+
+jshell> today.getYear()							
+$6 ==> 2023
+
+jshell> today.getDayOfMonth()					
+$7 ==> 23
+
+jshell> today.getDayOfWeek()
+$8 ==> TUESDAY
+
+jshell> today.getDayOfYear()
+$9 ==> 143
+
+jshell> today.getMonth()
+$10 ==> MAY
+
+jshell> today.getMonthValue()
+$11 ==> 5
+
+Se puede obtener getChronology es el tipo de cronología por ejemplo ISO:
+jshell> today.getChronology()
+$24 ==> ISO
+
+Se puede obtener la Clase que se está usando
+jshell> today.getClass()
+$25 ==> class java.time.LocalDate
+
+También se puede obtener getHour, getLong, getMinute, getNano, getSecond
+
+
+
+jshell> today.isLeapYear()		//Año bisiesto
+$12 ==> false
+
+jshell> today.lengthOfYear()
+$13 ==> 365
+
+jshell> today.lengthOfMonth()
+$14 ==> 31
+
+jshell> today.plusDays(100)		//Sumar días	
+$15 ==> 2023-08-31
+
+jshell> today.plusMonths(100)
+$16 ==> 2031-09-23
+
+jshell> today.plusYears(100)
+$17 ==> 2123-05-23
+
+Los tres últimos también aplica con el metodo minus para restar.
+También se puede sumar plusHours, plusMinutes, plusNanos, plusSeconds, plusWeeks
+¡OJO! Los valores que hemos calculado usando los metodos, no están cambiando la instancia today porque por definición en inmutable
+
+jshell> LocalDate daysHundredBack = today.minusDays(100)
+daysHundredBack ==> 2023-02-12
+
+Modificar Fechas
+jshell> LocalDate today = LocalDate.now()
+today ==> 2023-05-24
+
+jshell> LocalDate yesterday = LocalDate.of(2023, 05, 23)  //Metodo of ayuda a crear una fecha
+yesterday ==> 2023-05-23
+
+jshell> today.withYear(2018)	//Cambiar año
+$4 ==> 2018-05-24
+
+jshell> today.withDayOfMonth(12)	//Cambiar día del mes
+$6 ==> 2023-05-12
+
+jshell> today.withMonth(8)			//Cambiar mes
+$7 ==> 2023-08-24
+
+jshell> today.withDayOfYear(100)	//Cambiar por un día del año
+$8 ==> 2023-04-10
+
+También se puede hacer withHour, withMinute, withSecond
+
+Comparar Fechas
+
+today ==> 2023-05-24
+yesterday ==> 2023-05-23
+
+jshell> today.isBefore(yesterday)
+$11 ==> false
+
+jshell> today.isAfter(yesterday)
+$12 ==> true
+
+
+
+
+

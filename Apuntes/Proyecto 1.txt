@@ -1,0 +1,73 @@
+VENTA VEHICULOS NISSAN
+
+CLASE VEHICULO
+	ATRIBUTOS
+		Modelo
+		Cilindraje
+		Transmisión
+		Color
+		Precio
+		Unidades Disponibles
+	METODOS
+		Setear Modelo
+		Setear Transmision
+		Setear Color
+		Setear Precio
+		Setear Unidades Disponibles
+		Seleccionar Modelo
+		Seleccionar Transmision
+		Seleccionar Color
+		Obtener Precio
+		Obtener Unidades Disponibles
+		Agregar Al Carrito
+		
+CLASE CARRITO (Va ser el que ejecutará la compra)
+	ATRIBUTOS
+		Articulo
+		Precio
+		Unidades
+		Forma de Pago
+		Informacion del Cliente
+	METODOS
+		Ver Articulo (Modelo, color, transmision, cilindraje)
+		Aumentar Unidades
+		Disminuir Unidades
+		Obtener Precio
+		Seleccionar Forma de Pago
+		Ingresar Datos del Cliente
+		
+CLASE CLIENTE
+	ATRIBUTOS
+		Nombre
+		Dirección
+		Teléfono
+		Correo Electrónico
+	METODOS
+		Ingresar Nombre
+		Ingresar Dirección
+		Ingresar Telefono
+		Ingresar Correo Euentalectrónico
+		Obtener Nombre
+		Obtener Dirección
+		Obtener Telefono
+		Obtener Correo
+		SeleccionarVehiculo
+		
+CLASE CUENTA
+	ATRIBUTOS
+		Tipo de Cuenta
+		Numero de Cuenta
+		Saldo Disponible
+	METODOS
+		Ingresar Tipo de Cuenta
+		Ingresar Numero de Cuenta
+		Ingresar Saldo Disponible
+		Obtener Tipo de Cuenta
+		Obtener Numero de Cuenta
+		Obtener Saldo Disponible
+		
+		
+		
+		
+		
+	

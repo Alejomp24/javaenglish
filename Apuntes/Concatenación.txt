@@ -1,0 +1,70 @@
+CONCATENACIÓN 
+
+jshell> "1" + "2" + "3"
+$1 ==> "123"
+
+jshell> "1" + 2 + 3
+$2 ==> "123"
+
+jshell> 1 + 2 + "3"
+$3 ==> "33"
+
+//Entender que JAVA interpreta las lineas de código de izquierda a derecha y por eso predomina el tipo de dato de la izquierda
+
+jshell> System.out.println("Value is " + 20)
+Value is 20
+
+jshell> System.out.println("Value is " + 20 + 20)
+Value is 2020
+
+jshell> System.out.println("Value is " + (20 + 20))
+Value is 40												//el parentesis nos sirve para romper la predominación del tipo de dato
+
+jshell> "1" + (2 + 3)
+$4 ==> "15"
+
+USO DEL STRING JOIN
+
+jshell> String.join(",", "A", "B", "C")					//El primer caracter dentro del parentesis representa el criterio de unión
+$5 ==> "A,B,C"
+
+jshell> String.join("/", "A", "B", "C")
+$7 ==> "A/B/C"
+
+REPLACE
+
+jshell> "abcd".replace('a', 'z')						//Reemplaza el primer criterio por el segundo 
+$8 ==> "zbcd"
+
+jshell> "abcd".replace('b', '7')
+$9 ==> "a7cd"
+
+jshell> "abcd".replace("ab", "24")
+$10 ==> "24cd"
+
+//Para buscar más documentación sobre cosas en Java por ejemplo escribir en el navegador: java doc String java 11
+
+STRING BUFFER
+
+//Es sincronico y puede volverse lento si se usa subproceso multiple
+
+jshell> StringBuffer sb = new StringBuffer("Eliam")
+sb ==> Eliam
+
+Es una clase en Java, a diferencia de la clase String, éste si es mutables:
+
+jshell> sb.append(" Mateo")
+$12 ==> Eliam Mateo
+
+jshell> sb.setCharAt(6,'m')
+
+jshell> sb
+sb ==> Eliam mateo
+
+STRING BUILDER
+
+//Se usa para subprocesos multiples
+
+jshell> StringBuilder sb = new StringBuilder("perez")
+sb ==> perez
+

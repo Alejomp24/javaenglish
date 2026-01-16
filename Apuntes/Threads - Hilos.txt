@@ -1,0 +1,94 @@
+Los Hilos permiten trabajar Paralelismo en un proceso, ejecutar el proceso en varios subprocesos de manera simultanea.
+
+A nivel de codigo se pueden trabajar con:
+
+1.extends Thread
+2.implements Runnable
+
+Estados:
+*NEW				-	Cuando se crea una tarea pero aún no se ha ejecutado
+*RUNNABLE			- 	"Ejecutable", es cuando el hilo está listo para ejecutar, pero hay un subproceso que se está ejecutando
+*RUNNING			- 	Cuando la tarea se está ejecutando
+*BLOCKED/WAITING	-	Es cuando un hilo de trabajo está bloqueado o el hilo está esperando respuesta de otro trabajo.
+*TERMINATED/DEAD	- 	Cuando la tarea completa su ejecución 
+
+Prioridades:
+¿Cómo dar prioridad a un hilo sobre otro?
+
+hilo.setPriority() y se le puede indicar el máximo(10), el mínimo(1) o normal(5) de prioridad.
+
+Que se le indique una prioridad a un hilo, no quiere decir que éste se ejecute en el momento indicando de acuerdo a la prioridad que se le dio, 
+sino que quiere decir que el hilo entra a una lista de solicitud, indicando la prioridad que tiene. 
+
+Comunicación entre hilos:
+
+*Un hilo puede esperar su ejecución hasta que otro hilo se termine de ejecutar.
+	hilo.join();
+	
+*Por ejemplo un hilo puede entrar en sleep por un determinado tiempoi dado en milisegundos
+	Thread.sleep(100);				
+	
+*Un hilo puede ceder su uso actual, es decir, si la CPU está saturada él entendera que los hilos que tienen yield pueden ceder consumo de máquina.
+		Thread.yield();
+		
+*Sincronizado, parte del hecho de que hay muchos metodos que tienen la palabra reservada synchronized.
+ Entonces para hilos, synchronized, permite que solo 1 de los n subprocesos podrá ejecutar el código en 
+ cualquiera de los metodos sincronizados. Por lo tanto, los otros subprocesos deberan esperar.
+
+ Desventaja de la sincronización, es que puede haber saturamiento en la máquina.
+ 
+Executor Service:
+
+*Ayuda a iniciar varios subprocesos.
+*Ayuda a monitorear el estado de los hilos.
+*Ayuda a implementar lógica sobre cómo me gustaría que se ejecutaran los subprocesos.
+
+CONCEPTOS.
+
+THREADS: Procesos concurrentes que permiten una utilización eficiente de los recursos.
+
+THREAD CLASS: Se utiliza para crear y gestionar subprocesos en Java.
+
+Thread.start(): Método que inicia la ejecución de un hilo.
+
+Thread.sleep(): Método que pausa el hilo actual durante un tiempo específico
+
+Thread.setPriority(): Método que establece la prioridad de un hilo.
+
+Thread.yield(): Método que pausa el hilo actual para permitir que otros hilos se ejecuten
+
+RUNNABLE: 
+El propósito de implementar la interfaz Runnable en Java es proporcionar una forma de crear múltiples subprocesos implementando el método run(). 
+Al implementar la interfaz Runnable, una clase puede definir su propia lógica de ejecución sin extender la clase Thread. 
+Esto permite una mejor separación de preocupaciones y flexibilidad en el diseño de programas concurrentes.
+
+Un subproceso en estado RUNNABLE está listo para ejecutarse pero no se está ejecutando actualmente. 
+Esto significa que el hilo ha sido creado y es elegible para ser programado por el programador de hilos. 
+El programador de subprocesos es responsable de decidir qué subproceso ejecutar a continuación.
+
+JOIN():
+El método join() en Java permite que un hilo espere a que se complete otro hilo. 
+Cuando un hilo invoca el método join() en otro hilo, suspende su propia ejecución y espera a que el hilo especificado finalice su ejecución antes de reanudarla.
+
+CLASS THREAD & RUNNABLEINTERFACE:
+Todas las opciones mencionadas son desventajas de usar la clase Thread o la interfaz Runnable para administrar subprocesos. 
+La clase Thread y la interfaz Runnable proporcionan un nivel básico de gestión de subprocesos, pero carecen de un control detallado sobre la ejecución de subprocesos, 
+pueden ser difíciles de mantener cuando se gestionan varios subprocesos y no proporcionan una forma sencilla de obtener el resultado de una subtarea. 
+Para superar estos inconvenientes, se pueden utilizar marcos y utilidades de concurrencia más avanzados, como ExecutorService y CompletableFuture.
+
+¿Qué sucede si se envían más tareas a un ExecutorService que la cantidad de subprocesos en el grupo de subprocesos?
+Si se envían más tareas a un ExecutorService que la cantidad de subprocesos en el grupo de subprocesos, las tareas adicionales se ponen en cola y se ejecutan cuando un subproceso está disponible. 
+El grupo de subprocesos gestiona la ejecución de tareas asignando subprocesos del grupo para ejecutar las tareas enviadas. 
+Si todos los subprocesos están ocupados ejecutando tareas, las tareas adicionales se pondrán en cola hasta que haya un subproceso disponible para ejecutarlas.
+ 
+CALLABLE:
+La interfaz invocable se utiliza para crear subtareas que devuelven un resultado. 
+La interfaz Callable es similar a la interfaz Runnable pero permite que la subtarea devuelva un resultado y potencialmente genere una excepción.
+Ejecuta tareas de forma asincrónica y devuelve un resultado.
+
+CURRENCY: Técnica para ejecutar múltiples subprocesos simultáneamente.
+
+EXECUTOR SERVICE: Simplifica la gestión de subprocesos en Java
+
+
+

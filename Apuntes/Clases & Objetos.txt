@@ -1,0 +1,78 @@
+CLASES & OBJETOS
+Ejemplo. CLASE: País - OBJETOS: Colombia, Inglaterra, USA
+
+CREAR UNA CLASE (TEMPLATE)
+jshell> class Country{
+   ...> }
+|  created class Country
+
+CREAR UN OBJETOS (INSTANCIA)
+jshell> Country colombia = new Country()
+colombia ==> Country@5702b3b1
+
+CREAR METODO EN UNA CLASE
+jshell> class Planet{
+   ...>     void revolve(){
+   ...>         System.out.println("Revolve");
+   ...>     }
+   ...> }
+   ...>
+|  created class Planet
+
+jshell> Planet earth = new Planet()
+earth ==> Planet@73846619
+
+jshell> Planet venus = new Planet()
+venus ==> Planet@29ca901e
+
+EJECUTAR METODO DE UNA CLASE
+Sintaxis
+Objeto.Metodo()
+jshell> earth.revolve()
+Revolve
+
+**Es necesario que la Clase tenga datos (en este caso la clase debería tener objetos), de lo contrario sucede lo siguiente:
+jshell> marte.revolve()
+|  Error:
+|  cannot find symbol
+|    symbol:   variable marte
+|  marte.revolve()
+|  ^---^
+
+COMPILAR PARA CREAR CLASE
+Windows PowerShell
+Copyright (C) Microsoft Corporation. Todos los derechos reservados.
+
+Instale la versión más reciente de PowerShell para obtener nuevas características y mejoras. https://aka.ms/PSWindows
+
+PS C:\Users\alejo> cd C:\Users\alejo\Documents\Java\JavaForBeginners\
+PS C:\Users\alejo\Documents\Java\JavaForBeginners> ls
+
+
+    Directorio: C:\Users\alejo\Documents\Java\JavaForBeginners
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----      10/04/2023  3:07 p. m.             76 Planet.java
+
+
+PS C:\Users\alejo\Documents\Java\JavaForBeginners> java -version
+java version "20" 2023-03-21
+Java(TM) SE Runtime Environment (build 20+36-2344)
+Java HotSpot(TM) 64-Bit Server VM (build 20+36-2344, mixed mode, sharing)
+PS C:\Users\alejo\Documents\Java\JavaForBeginners> javac Planet.java
+PS C:\Users\alejo\Documents\Java\JavaForBeginners> dir
+
+
+    Directorio: C:\Users\alejo\Documents\Java\JavaForBeginners
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----      10/04/2023  3:24 p. m.            391 Planet.class
+-a----      10/04/2023  3:07 p. m.             76 Planet.java
+
+CORRER LO COMPILADO
+PS C:\Users\alejo\Documents\Java\JavaForBeginners> java Planet
+Revolve

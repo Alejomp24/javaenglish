@@ -1,0 +1,25 @@
+//Permite agregar varios valores a un arreglo sin definir previamente la longitud de éste
+
+jshell> void print(int...values){
+   ...>     System.out.println(Arrays.toString(values));
+   ...> }
+|  created method print(int...)
+
+jshell> print(7, 12, 24, 87)
+[7, 12, 24, 87]
+
+//Otro ejemplo
+
+jshell> int sum(int... values){
+   ...>     int sum = 0;
+   ...>     for(int value:values){
+   ...>         sum += value;
+   ...>     }
+   ...>     return sum;
+   ...> }
+|  created method sum(int...)
+
+jshell> sum(7, 12, 24, 87)
+$4 ==> 130
+
+//Los Variable Arguments siempre deben ser el último parámetro dentro del metodo

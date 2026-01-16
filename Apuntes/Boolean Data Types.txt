@@ -1,0 +1,26 @@
+Boolean Data Types:
+*true
+*false
+
+Operadores Relacionales
+==, !=, >, >=, <, <=, 
+&&(y), ||(o), ^ (XOR) se utiliza para determinar si solo una de las dos expresiones es verdadera   
+! revertir el resultado, es decir, si es verdadero será falso y visceversa. Ejemplo i = 5, !(i>7), true
+
+Operadores Cortocircuito, & |, pero es recomendable no usarlas en nuestra lógica de programas. 
+jshell> int i = 10
+i ==> 10
+
+jshell> int j = 15
+j ==> 15
+
+&
+jshell> j > 15 & i++ > 5
+$3 ==> false
+
+jshell> i
+i ==> 11
+
+Hace como &&, que aunque no se cumpla la condición si está aplicando la operación ++
+
+ 

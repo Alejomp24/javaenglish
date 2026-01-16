@@ -1,0 +1,83 @@
+DEFINICIONES.
+
+JSHELL: Herramienta para pruebas y evaluación de código interactivo 
+JVM: Java Virtual Machine, el entorno de tiempo de ejecución donde se ejecuta el código de bytes de Java (bytecode).
+JRE: Java Runtime Environment, necesario para ejecutar programas Java. JRE = JVM + Librerias + Otros Componentes
+JDK: Java Development Kit, necesario para compilar y correr programas de Java. JDK = JRE + Compiladores + Depuradores
+IDE: Integrated Development Environment, una aplicación de software que ayuda a desarrollar código Java de manera eficiente
+
+C:\Program Files\Java\jdk-20\
+
+Se instaló el JSHELL que es la consola de JAVA, desde allí se puede programar.
+Para iniciar el JSHELL abrir el Simbolo de Sistema de Windows y ejecutar la instrucción jshell
+
+BASIC OPERATOR + - * / %
+PRECEDENCE * / % > + -
+
+System.out.println(3*4)							//Imprimir en Pantalla, es importante la sintaxis ya que cambiar minúscula por mayúscula o viceversa y omitir algun caracter o instrucción conlleva a errores en el código.
+System                          				//Es una Clase
+println											//Es un Metodo, esta es la sintaxis method_path(parameter)
+( )												//Lo que hay dentro de los parentesis son parámetros 		
+System.out.println("Hola mundo")				//Este es un ejemplo para imprimir un String				
+
+jshell> System.out.println("Hello \"Eliam")		//Ejemplo 2
+Hello "Eliam
+
+jshell> System.out.println("Hello \n Eliam")	//Ejemplo escribir en siguiente linea 
+Hello
+ Eliam
+ 
+jshell> System.out.println("Hello \t Eliam")	//Ejemplo escribir con tabulación
+Hello    Eliam
+
+jshell> Math.random()							//Generar numero aleatorio
+$5 ==> 0.8235627777811858
+
+jshell> Math.min(24,87)							//Mínimo entre dos numeros
+$6 ==> 24
+
+jshell> Math.max(24,87)							//Máximo entre dos numeros
+$7 ==> 87
+
+jshell> int i = 5;								//Asignar valor a variable
+i ==> 5
+
+jshell> if(true)
+   ...> {
+   ...>     i=11;
+   ...>     i=12;
+   ...> }
+
+jshell> i
+i ==> 12
+
+jshell> System.out.printf("5 * 2 = 10").println()			//printf() El método permite formatear e imprimir valores de expresiones. 
+5 * 2 = 10
+
+jshell> System.out.printf("5 * 2 = %d", 5*2).println()		//%d formato para enteros hace referencia a los valores del segundo parámetro
+5 * 2 = 10
+
+jshell> System.out.printf("%d %d %d", 5, 7, 5 * 7).println()
+5 7 35
+
+jshell> System.out.printf("%d * %d = %d", 5, 7, 5 * 7).println()
+5 * 7 = 35
+
+jshell> System.out.printf("%d + %d + %d = %d", 5, 6, 7, 5 + 6 + 7).println()
+5 + 6 + 7 = 18
+
+jshell> System.out.printf("%s", "Eliam").println()			//%s formato para caracteres hace referencia a los valores del segundo parámetro
+Eliam
+
+jshell> System.out.printf("%f", 24.7).println()				//%f formato para flotantes hace referencia a los valores del segundo parámetro
+24,700000
+
+bck-i-search: _												//Ctrl + R Buscar un patrón dentro del programa
+
+https://www.in28minutes.com/flashcard-java-01-01-introductiontojavaprogramming
+https://www.in28minutes.com/flashcard-java-01-02-primitive-data-types
+https://www.in28minutes.com/flashcard-java-02-introductiontomethods
+https://github.com/in28minutes/java-tutorial-for-beginners#readme
+https://www.in28minutes.com/flashcard-java-07-conditionals
+ 
+	

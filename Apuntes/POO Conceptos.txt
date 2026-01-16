@@ -1,0 +1,63 @@
+*Los métodos se utilizan para enviar instrucciones a un objeto. 
+Cuando se llama a un método en un objeto, se ejecuta el código del objeto. 
+Este código puede realizar cualquier acción que el objeto sea capaz de realizar, como acceder a datos, cambiar datos o realizar cálculos.
+
+*El estado de un objeto corresponde a sus variables miembro o atributos, que contienen los datos y representan los valores actuales asociados con el objeto.
+
+*El propósito de los constructores en una clase es crear objetos de esa clase inicializando el estado del objeto y realizando las tareas de configuración o inicialización necesarias.
+
+*El propósito del método toString() en una clase es proporcionar una representación de cadena de un objeto, 
+lo que permite una salida significativa y legible por humanos cuando el objeto se imprime o se usa en la concatenación de cadenas.
+
+*La herencia es un mecanismo en la Programación Orientada a Objetos que permite que una clase herede y reutilice propiedades y comportamientos de otra clase, 
+promoviendo la reutilización de código y creando una relación jerárquica entre clases.
+
+*La clase Object es una clase de biblioteca Java incorporada que sirve como clase raíz para todas las demás clases en Java.
+
+*Java NO admite herencia múltiple, lo que significa que una clase puede heredar solo de una superclase.
+
+*Inheritance(Herencia): Heredar propiedades y métodos de una clase principal para reutilizar código.
+
+*Object Class: La clase predeterminada de la que heredan todas las clases de Java
+
+*Method Overriding: Redefinir un método en una subclase con el mismo nombre y firma que en su superclase.
+
+*Abstract Class: Un esquema de clase con algunos detalles completados y otros en blanco. No se pueden crear instancias.
+
+*extends: Palabra clave utilizada para implementar la herencia en Java (por ejemplo, clase pública Estudiante extiende Persona)
+
+*Interface: Un modelo de una clase, que contiene firmas de métodos.
+
+*implements: Palabra clave utilizada para implementar una interfaz en Java (por ejemplo, la clase pública MarioGame implementa GamingConsole)
+
+*Polymorphism: La capacidad de un objeto de adoptar múltiples formas o tener múltiples comportamientos.
+
+*Collections: Clases para almacenar y manipular grupos de objetos.
+
+*Array: Colección de tipos de datos similares en memoria contigua.
+
+*LinkedList: Estructura de datos que almacena elementos y cada uno apunta al siguiente.
+
+*Hashing: Generar un código único para una entrada dada.
+
+*Trees: Estructura de datos que representa una estructura jerárquica que consta de nodos.
+
+*Collection Interface: Marco para trabajar con colecciones de objetos.
+
+*List: Colección ordenada que permite elementos duplicados.
+
+*Set: Colección desordenada que almacena elementos únicos.
+
+*Queue: Almacena elementos en orden primero en entrar, primero en salir (FIFO)
+
+*Stack: Sigue el principio de último en entrar, primero en salir (LIFO)
+
+*Map: Colección de pares clave-valor que permiten una búsqueda rápida por clave
+
+*Comparable: Interfaz para definir el orden natural de los objetos, utilizada para clasificar.
+
+*TreeSet: Estructura de datos de conjunto ordenado que almacena elementos únicos en orden ascendente
+
+https://www.in28minutes.com/flashcard-java-11-objectorientedprogrammingagain
+https://www.in28minutes.com/flashcard-java-12-01-collections
+https://www.in28minutes.com/flashcard-java-12-02-collections

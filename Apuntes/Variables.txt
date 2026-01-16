@@ -1,0 +1,180 @@
+//Declaración de variable: Tipo nombre = valor
+jshell> int number = 10			
+number ==> 10
+
+jshell> int newVariable
+newVariable ==> 0
+
+//Ver variable
+jshell> number					
+number ==> 10
+
+//Asignar valor a variable
+jshell> number = 12				
+number ==> 12
+
+//Ejemplo de uso de variables en expresión
+jshell> int n1 = 5
+n1 ==> 5
+
+jshell> int n2 = 7
+n2 ==> 7
+
+jshell> System.out.printf("%d * %d = %d", n1, n2, n1 * n2).println()
+5 * 7 = 35
+
+//Otro ejemplo
+jshell> int n3 = 12
+n3 ==> 12
+
+jshell> System.out.printf("%d + %d + %d = %d", n1, n2, n3, n1 + n2 + n3).println()
+5 + 7 + 12 = 24
+
+//Errores en Declaración o Asignación de Variables
+jshell> newVariable = 5.5
+
+|  Error:
+|  incompatible types: possible lossy conversion from double to int
+|  newVariable = 5.5
+|                ^-^
+
+jshell> int n4 = 12.7
+|  Error:
+|  incompatible types: possible lossy conversion from double to int
+|  int n4 = 12.7;
+|           ^--^
+
+jshell> int n4 = "Eliam"
+|  Error:
+|  incompatible types: java.lang.String cannot be converted to int
+|  int n4 = "Eliam";
+|           ^-----^
+
+//Variables Almacenadas en Memoria
+Memory		Value		Name
+5004
+5008		100			a
+5012		10			b
+5016
+5020
+5024		110			c
+5028
+5032
+5036
+5040
+
+jshell> int a = 5
+a ==> 5
+
+jshell> int b = 10
+b ==> 10
+
+jshell> a = 100
+a ==> 100
+
+jshell> int c = a + b
+c ==> 110
+
+//Nombramiento de Variables
+*No comenzar con un numero
+*No usar una palabra reservada (keyword)
+*Sin límite en la longitud del identificador
+*Combinación de letras, numeros, $ y _
+*Nombre de las variables sean claras de entender
+*CamelCase
+	-Al nombrar una variable se inicia con una Minuscula y si se compone de más palabras o fragmentos de palabras la primera letra va en mayúscula. Ejemplo saldoDisponible
+	
+*Tipo de Datos:
+	byte	8 bits	-128 to 127
+	short	16 bits	-32,768 to 32,767
+	int		32 bits	-2,147,483,648 to 2,147,483,647
+	long	64 bits -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 
+	float	32 bits not very precise, don't use for financials, en la declaración debe ir con una f al final float f = 2.4f
+	double	64 bits not very precise, don't use for financials
+	char	16 bits '\u0000' to '\uffff', solo permite un caracter
+	boolean true or false
+	
+//Sumar a una variable numérica
+jshell> short numberOfGoals
+numberOfGoals ==> 0
+
+jshell> numberOfGoals++
+$32 ==> 0
+
+jshell> numberOfGoals
+numberOfGoals ==> 1
+
+//Concatenación
+jshell> "Eliam" + "Mateo"
+$39 ==> "EliamMateo"	
+
+jshell> int edad = 1
+edad ==> 1
+
+jshell> System.out.println("Eliam Mateo tiene " + edad + " año")
+Eliam Mateo tiene 1 a±o
+
+//Asignar valor a variables
+jshell> int i
+i ==> 0
+
+jshell> int j = 24
+j ==> 24
+
+jshell> i=j
+i ==> 24
+
+jshell> i = j * 2
+i ==> 48
+
+jshell> i= i + j
+i ==> 72
+
+jshell> i += 24
+$13 ==> 96
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

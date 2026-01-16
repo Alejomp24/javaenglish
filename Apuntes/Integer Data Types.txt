@@ -1,0 +1,50 @@
+Integer Data Types:
+*Byte
+*Short
+*Integer
+*Long
+
+Comandos para ver sus detalles:
+DataType.BYTES
+DataType.SIZE
+DataType.MAX_VALUE
+DataType.MIN_VALUE
+
+Conversiones:
+Implicito, por ejemplo cuando paso de un DataType pequeño a uno grande long = integer;
+*Explicita, por ejemplo cuando paso de un DataType grande a uno pequeño integer = (int) long;
+
+Operadores:
++ - * / % ++ --
+
+Octal
+jshell> int eigth = 010;
+eigth ==> 8
+Es decir, si comienza con 0 es un numero Octal
+Por ejemplo, un sistema de números Octal, solo tendrá números del 0 al 7.
+El sistema decimal es de 0 a 9
+
+Hexadecimal
+jshell> int sixteen = 0x10;
+sixteen ==> 16
+Es decir, si comienza con 0x es un numero Hexadecimal
+El sistemna hexadecimal es de 0 a F 
+Es decir, se representa así A=10, B=11, C=12, D=13, E=14 y F=15
+
+Incrementos
+jshell> int i = 10
+i ==> 10
+
+jshell> int j = i++
+j ==> 10
+Aquí primero se hace la asignación y luego el incremento
+
+jshell> i
+i ==> 11
+************
+jshell> int i = 10
+i ==> 10
+
+jshell> j = ++i
+j ==> 11
+En este caso primero hizo el incremento y después la asignación 

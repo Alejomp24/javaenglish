@@ -1,0 +1,12 @@
+jshell> char m = 'e'
+m ==> 'e'
+
+Se pueden tambier definir Unicodes https://en.wikipedia.org/wiki/List_of_Unicode_characters
+jshell> char u = '\u0024'
+u ==> '$'
+
+jshell> char a = 65
+a ==> 'A'
+
+jshell> a++
+$10 ==> 'B'

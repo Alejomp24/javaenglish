@@ -1,0 +1,83 @@
+Es poder heredar características de otra clase.
+
+public class Student extends Person {
+
+}
+
+INHERENCIA
+Es algo así como heredar caracteristicas de una clase que no hemos extendido.
+Por ejemplo llava tiene una clase llamada Object y de ella podemos tomar varias de sus características.
+
+String value = person.toString();  //el metodo toString hace parte de la clase Object de Java
+
+JERARQUÍA
+
+jshell> class Animal{
+   ...> }
+|  created class Animal
+
+jshell> class Pet extends Animal{
+   ...> }
+|  created class Pet
+
+jshell> class Dog extends Pet{
+   ...> }
+|  created class Dog
+
+jshell> Dog dog = new Dog();
+dog ==> Dog@6adede5
+
+jshell> Pet pet = new Dog();
+pet ==> Dog@5025a98f
+
+jshell> Dog dog1 = new Pet()
+|  Error:
+|  incompatible types: Pet cannot be converted to Dog
+|  Dog dog1 = new Pet();
+|             ^-------^
+
+INTANCIA
+jshell> pet instanceof Dog
+$6 ==> true
+
+jshell> pet instanceof Pet
+$7 ==> true
+
+jshell> animal intanceof Pet			//Una variable de Superclase no es una instancia de una subclase
+|  Error:
+|  ';' expected
+|  animal intanceof Pet;
+|   
+
+CLASS ABSTRACT
+Tiene una característica mediante la cual no es necesario específicar implementaciones de algunos metodos, es decir,
+metodos que no tienen definición, no tienen cuerpo. No dicen lo que hacen, solo tienen la declaración.
+
+jshell> abstract class AbstractAnimal{
+   ...>     abstract public void bark();
+   ...> }
+|  created class AbstractAnimal
+
+
+Para una clase abstracta no se pueden crear instancias, sin embargo, se pueden extender clases abstractas y crear clases concretas.
+
+jshell> class Dog extends AbstractAnimal{
+   ...>     public void bark(){
+   ...>         System.out.println("Gua Gua");
+   ...>     }
+   ...> }
+|  created class Dog
+
+jshell> Dog dog = new Dog();
+dog ==> Dog@29ca901e
+
+jshell> dog.bark()
+Gua Gua
+
+Pasos:
+1.Prepare
+2.Recipe
+3.CleanUp
+
+
+

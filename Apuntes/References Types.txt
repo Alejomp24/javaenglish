@@ -1,0 +1,182 @@
+COMO ALMACENAR EN MEMORIA
+
+Por ejemplo en la Clase Planet tenemos el objeto jupiter y este objeto jupiter es una variable de referencia:
+
+Planet jupiter = new Planet(12);
+Planet tierra = new Planet(7);
+
+Hay dos tipos de memoria Stack y Heap, los objetos nuevos se crean en Heap, mientras que las variables promitivas se crean en Stack
+
+Por ejemplo:
+							STACK					|				HEAP
+				Location	Value	VariableName	|		Location	Object
+					A			5		i			|			1A		Plante7
+					B								|			1B		
+					C		1C			jupiter		|			1C		Planet12
+					D								|			1D
+					E		1A						|			1E	
+					F								|			1F	
+				Each method has separate stack					Global Shared
+				
+
+Lo anterior es una VARIABLE DE REFERENCIA y se refiere a la ubicación de la memoria donde existe el objeto "jupiter".
+
+La variable de referencia es la ubicación de la memoria donde se almacena el objeto real. 
+
+jshell> class Animal{
+   ...>     private int id;
+   ...>     Animal(int id){
+   ...>         this.id = id;
+   ...>     }
+   ...> }
+|  created class Animal
+
+jshell> Animal dog = new Animal(12);
+dog ==> Animal@73846619
+
+jshell> Animal cat = new Animal(10);
+cat ==> Animal@29ca901e
+
+jshell> Animal ref = cat;				//ref quedó con la ubicación de memoria de cat
+ref ==> Animal@29ca901e
+
+jshell> ref == cat						//Aquí lo que se está comparando es si es el mismo objeto
+$5 ==> true
+
+jshell> Animal dog2 = new Animal(12);	//En este caso a pesar que dog2 tiene el mimos valor que dog, no son iguales porque están en diferentes ubicaciones de memoria 
+dog2 ==> Animal@5025a98f
+
+jshell> dog == dog2						//Aquí lo que se está comparando es si es el mismo objeto
+$7 ==> false
+
+
+CLASE STRING
+
+Lo que se coloca en comilla doble es una instancia de la Clase String, por ejemplo:
+
+jshell> "Eliam".length();
+$8 ==> 5
+
+jshell> String str = "Mateo"			//No necesariamente se debe usar un constructor para crear una instancia
+str ==> "Mateo"
+
+jshell> str
+str ==> "Mateo"
+
+jshell> String str2 = new String("Perez")
+str2 ==> "Perez"
+
+En String el primer indice comienza en 0, por ejemplo para extraer algo del String se hace así:
+
+//Para extraer un caracter
+jshell> str.charAt(0)					
+$12 ==> 'M'
+
+//Para extraer desde una posición específica hacia adelante
+jshell> String biggerString = "This is a lot of text"
+biggerString ==> "This is a lot of text"
+
+jshell> biggerString.substring(5)		
+$14 ==> "is a lot of text"
+
+//Para extraer desde una posición inicial hasta una posición final -1
+//Posición Inicial(PI) es inclusiva y la Posición Final(PF) es exclusiva, es decir, en el substring se incluye la PO pero la PF se excluye
+jshell> biggerString.substring(5,13)
+$15 ==> "is a lot" 
+
+//Ejercicio Imprimir caracter por caracter de un STRING
+jshell> String nombre = "Eliam Mateo Perez Muñoz"
+nombre ==> "Eliam Mateo Perez Muñoz"
+
+jshell> int lon = nombre.length();
+lon ==> 23
+
+jshell> for(int i=0; i<=lon; i++){
+   ...>     System.out.println(nombre.charAt(i));
+   ...> }
+E
+l
+i
+a
+m
+
+M
+a
+t
+e
+o
+
+P
+e
+r
+e
+z
+
+M
+u
+±
+o
+z
+
+//Saber si un conjunto de caracteres está dentro del String
+jshell> nombre.indexOf("Perez")
+$5 ==> 12													//Ubica la posición del primer caracter de lo que estamos buscando
+
+//Saber la ultima posición de un caracter en específico
+jshell> nombre.lastIndexOf('e')
+$7 ==> 15													//En el ejemplo hay 4 'e'
+
+//Saber sin una cadena de caracteres está dentro del STRING
+jshell> nombre.contains("Eliam")
+$8 ==> true
+
+//Saber si el String comienza con un conjunto de caracteres en específico
+jshell> nombre.startsWith("Eli")
+$9 ==> true
+
+//Saber si el String termina con un conjunto de caracteres en específico
+jshell> nombre.endsWith("oz")
+$10 ==> true
+
+//Validar si el String está vacio
+jshell> nombre.isEmpty()
+$11 ==> false
+
+//Validar si 2 String son iguales
+jshell> nombre.equals(name)
+$16 ==> true
+
+//Validaer si 2 String son iguales sin importar si hay diferencias por ejemplo de mayúsculas y minúsculas
+jshell> nombre.equalsIgnoreCase("ElIaM")
+$19 ==> true
+
+//Cocatenar un String
+jshell> String str = "in28Minutes"
+str ==> "in28Minutes"
+
+jshell> str.concat(" is awesome")
+$21 ==> "in28Minutes is awesome"
+
+jshell> str
+str ==> "in28Minutes"				//Sin embargo, la concatenación no quedó y esto ser llama INMUTABILIDAD porque la instancia no cambia
+
+jshell> String str2 = str.concat(" is awesome")
+str2 ==> "in28Minutes is awesome"	//De esta forma si queda la concatenación
+
+jshell> str2
+str2 ==> "in28Minutes is awesome"		
+
+//Metodo para poner en mayúscula
+jshell> str.toUpperCase()
+$25 ==> "IN28MINUTES"
+
+//Metodo para poner en minúscula
+jshell> str.toLowerCase()
+$27 ==> "in28minutes"
+
+//Para eliminar espacios a la izquierda y a la derecha
+jshell> str2.trim()
+$29 ==> "Mario Alejandro"
+
+
+

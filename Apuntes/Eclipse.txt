@@ -1,0 +1,79 @@
+Ctrl + Shift + L	Lista de funciones de teclado
+
+Ctrl + N			Crear
+
+Ctrl + Space		Cuando se escribe una palabra y se ejecuta este comando se despliega una lista de templates para seleccionar una.	
+
+Ctrl + Shift + R 	Cambiar de Editor, muestra una pantalla con las Clases creadas
+
+En jshell se pueden ejecutar operaciones, por ejemplo aritmeticas, directamente. Mientras que en Eclipse se debe crear estamentos.  
+En jshell se puede declarar la misma variable varias veces, sobreescribiendo simpre la última declaración. Mientras que en Eclip arroja error de que la variable ya existe.
+Em jshell no necesariamente las variables deben ser inicializadas, mientras que en Eclipse si es necesario inicializar las variables
+
+Workspace
+	> Project 1
+		file1
+		file2
+	> Project 2
+		file1
+		file2
+		
+Eliam
+	> FirstJavaProject
+	
+********* NOTAS ***********************
+El método public static void main(String[] args) {} es un método especial, es el que permite ejecutar el código de un programa, o aplicación. 
+Trate de crear metodos dentro de public static void main(String[] args) {}, pero no se dejó
+Por lo anterior entiendo que se creó una "Clase" para ejecutar los metodos de la clase principal
+
+
+	
+CREAR WORKSPACE
+-Cuando se ejecuta Eclipse se puede crear un workspace indicando nombre y ruta de ubicación.
+
+CREAR PROJECT
+-File -> New -> Project -> Java Project -> Next:
+	* Indicar nombre del proyecto
+	* El resto de parámetros van por defecto a menos que se requiera una configuración específica.
+	* Finish -> Open Perspective
+	
+CREAR CLASS
+-En el Proyecto, en la carpeta src, dar click derecho y New -> Class
+-Se indica el nombre de la Clase y se sugiere un package que en este caso se utilizó com.in28minutes.firstjavaproject
+-En los metodos para este caso se seleccionó public static void main(String[] args) e Inherited abstract methods
+
+REALIZAR UN DEBUG
+-Se debe colocar un Break Point: 
+ Para ello se debe dar doble click en la franja azul asociado a la línea de código que se quiere revisar.
+
+-Step Over:
+ Es ejecutar la linea de código actual y pasar a la siguiente linea de código, pasando por encima alguna invocación de código
+ Por ejemplo: 
+	*6	MultiplicationTable table = new MultiplicationTable();     // Aquí está el Break Point, se completa la linea 6, no entraría hacer el paso a paso del proyecto MultiplicationTable y pasaría a la linea 7   
+	 7	table.print(2, 3, 8);
+
+-Step Into:	 
+ Es ejecutar todas las lineas de código del software
+ Por ejemplo, para el caso anterior en la linea 6 se ejecutarian las lineas de código del proyecto MultiplicationTable 
+ 
+-Run to Line:
+ Es ejecutar el programa hasta la linea de código que le señalemos. 
+
+-Generar Código Automáticamente.
+ Click derecho -> Source -> Generate Getters & Setters
+ 
+Formas de ver Documentación Java en Eclipse
+
+Ctrl+Shift+T ->Abrir listas 
+Ctrl O
+
+Los anteriores comandos me permiten ver documentación sobre el uso de Clases, Metodos 
+
+ALINEAR CODIGO
+//Lineas originales
+		int[] marks = { 97, 98, 100 };
+		Student student = new Student("Eliam", marks);
+
+//Click derecho sobre la variable-arreglo, luego seleccionar Refactor y en la ventana de despliegue dar OK
+		Student student = new Student("Eliam", new int[] { 97, 98, 100 });
+ 

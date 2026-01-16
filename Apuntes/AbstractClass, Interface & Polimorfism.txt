@@ -1,0 +1,132 @@
+jshell> interface Interface1{
+   ...>     void method1();
+   ...> }
+|  created interface Interface10
+
+jshell> interface Interface2 extends Interface1{
+   ...>     void method2();
+   ...> }
+|  created interface Interface2
+
+jshell> class Implementation implements Interface2{		//Para esta clase fue necesario implementar las 2 interfaces, porque la interfaz 2 depende de la 1
+   ...>     public void method2(){}
+   ...>     public void method1(){}
+   ...> }
+|  created class Implementation
+
+
+jshell> abstract class ImplementationAbstract implements Interface2{	//Si se quiere crear una clase solo con un metodo, es necesario usar una clase abstracta
+   ...>     public void method1(){}
+   ...> }
+|  created class ImplementationAbstract
+
+jshell> interface Interface4 {
+   ...>     default void print(){
+   ...>         System.out.println("default");
+   ...>     }
+   ...> }
+|  created interface Interface4
+
+*Entiendo que si las interfaces tiene metodos default, esto permite que n cantidad de clases usen los metodos default de la interfaz. 
+Pero si se modifica la interfaz y sus metodos entonces se genera error en todas las clases que utilizan la interfaz.
+
+*Optar por una interfaz cuando quisieramos tener dos sistemas hablando entre si, o dos clases, o dos componentes hablando entre si 
+y quisieramos establecer un patrón de comunicación entre ellos.
+
+*Clase Abstracta es brindar una estructura de alto nivel, dejando los detalles de implementación a las subclases.
+La super clase es la clase abstracta y el resto de clases serían las subclases.
+
+*Tanto en Interfaces no se puede llamar a algo como privado porque allí todo es público. Tampoco se pueden tener variables.
+
+*Una clase puede implementar múltiples interfaces, pero no puedes extender multiples clases extractas.
+
+//Interfaz
+//interface Flyable{
+//	void fly();
+//}
+
+//Clases
+//class Bird implements Flyable{
+//	public void fly(){
+//		System.out.println("with wings");
+//	}
+//}
+//class Airplane implements Flyable{
+//public void fly(){
+//	System.out.println("with fuel");
+//}
+//}
+
+//Ejecutable
+//public class FlyableRunner {
+//	public static void main(String[] args) {
+//		Flyable[] flyingObjects = {new Bird(), new Aeroplane()};			//Polimorfismo
+//		for(Flyable object : flyingObjects){
+//			object.fly();
+//		}
+//	}
+//}
+
+Abstract Method
+Un método abstracto es una declaración de método sin una definición o implementación de método, que proporciona un contrato que las subclases concretas deben implementar.
+Una clase abstracta no se puede instanciar directamente. Sirve como modelo para subclases concretas y debe ser ampliado por una subclase para crear objetos.
+
+Una clase abstracta es una clase que no se puede instanciar (crear). Se utiliza para definir una estructura o interfaz común para un conjunto de subclases. 
+En el contexto de recetas, una clase abstracta podría definir los pasos comunes que tienen todas las recetas, como reunir ingredientes, preparar ingredientes y cocinar el plato. 
+Las subclases de la clase abstracta implementarían entonces los pasos específicos para cada tipo de receta. Esto permite flexibilidad y personalización, manteniendo una estructura común.
+
+El patrón del método de plantilla se usa en el ejemplo de jerarquía de recetas, donde la clase abstracta define la estructura general de la receta y 
+delega la implementación de pasos específicos a sus subclases.
+
+Sí, una clase abstracta puede tener variables miembro, que son heredadas por sus subclases y pueden ser accedidas y utilizadas por ellas.
+
+Sí, una clase abstracta puede tener métodos no abstractos. Puede proporcionar implementaciones predeterminadas para el comportamiento común y 
+también declarar métodos abstractos que deben implementar sus subclases.
+
+Las clases de implementación son responsables de proporcionar la implementación de los métodos declarados en una interfaz. 
+Deben anular y definir el comportamiento de cada método especificado por la interfaz.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

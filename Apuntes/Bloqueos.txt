@@ -1,0 +1,49 @@
+CONCURRENCIAS
+
+	synchronized public void increment() {
+		i++;
+	}
+
+synchronized, es para asegurar de que solo un subproceso esté ejecutando un método en un momento espcífico.
+
+Solución para Concurrencias:
+package com.perezcasallas;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class Counter {
+	private int i = 0;
+	private int j = 0;
+
+	Lock lockForI = new ReentrantLock();
+	Lock lockForJ = new ReentrantLock();
+	
+	synchronized public void incrementI() {
+		lockForI.lock();
+		i++;
+		lockForI.unlock();
+	}
+
+	public int getI() {
+		return i;
+	}
+	
+	synchronized public void incrementJ() {
+		lockForJ.lock();
+		j++;
+		lockForJ.unlock();
+	}
+
+	public int getJ() {
+		return j;
+	}
+}
+
+
+CLASES ATÓMICAS.
+
+Aseguran que el fragmento de código sea automáticamente seguro para subprocesos.
+
+CopyOnWrite, copia toda la matriz cuando se realiza un cambio.
+
+

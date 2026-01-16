@@ -1,0 +1,322 @@
+CLAVES:
+*Mensajes amigables al usuario final
+*Suficiente información para depurar(debug) el problema.
+
+MANEJO DE EXCEPCIONES:
+
+try & catch
+
+package com.perezcasallas;
+
+public class ExceptionHandlingRunner {
+
+	public static void main(String[] args) {
+
+		try {
+			String str = null;
+			str.length();
+			System.out.println("Method Ended");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+}
+
+java.lang.NullPointerException: Cannot invoke "String.length()" because "str" is null
+	at com.perezcasallas.ExceptionHandlingRunner.main(ExceptionHandlingRunner.java:9)
+
+*Aquí el programa se termina de ejecutar e informa al usuario el error que presenta
+
+JERARQUÍA DE EXCEPCIONES:
+
+///			try & catch			///
+
+package com.perezcasallas;
+
+public class ExceptionHandlingRunner {
+
+	public static void main(String[] args) {
+
+		try {
+			String str = null;
+			str.length();
+			System.out.println("Method Ended");
+		} catch (NullPointerException ex) {
+			System.out.println("Null Pointer Exception EMPM");
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+}
+
+Null Pointer Exception EMPM
+java.lang.NullPointerException: Cannot invoke "String.length()" because "str" is null
+	at com.perezcasallas.ExceptionHandlingRunner.main(ExceptionHandlingRunner.java:9)
+
+*Aquí se ve la jerarquía cada vez que se agrega una excepción con catch.
+*Las excepciones van de acuerdo al código que está implementado, es decir, si se manejan String manejar excepciones de String, si se manejan Arrays manejar excepciones de arrays
+
+///			finally			///
+
+package com.perezcasallas;
+
+import java.util.Scanner;
+
+public class FinallyRunner {
+
+	public static void main(String[] args) {
+		Scanner scanner = null;
+		try {
+			scanner = new Scanner(System.in);
+		int[] numbers = { 7, 12, 20, 24 };
+		int number = numbers[5];
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		System.out.println("Before Scanner Close");
+		scanner.close();
+	}
+	System.out.println("Justing before closing out main");
+	}
+}
+
+*Se usa finally, si se quiere terminar de ejecutar determinadas lineas de código.
+*También se usa para asegurar que todos los objetos creados estén cerrados.
+*También el código que está en finally se ejecuta independientemente si hay excepciones o no
+
+EXCEPCIÓN VERIFICADA Y EXCEPCIÓN NO VERIFICADA
+
+package com.perezcasallas;
+
+public class CheckedExceptionRunner {
+
+	public static void main(String[] args) {
+		try {																				//Forma Controlada	
+			someOtherMethod();		
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void someOtherMethod() throws InterruptedException {						//Forma por Default, porque hay metodos que son riesgosos y que obligan a tener manejo de excepciones
+		Thread.sleep(2000);		
+	}
+}
+
+JERARQUÍA DE EXCEPCIONES:
+
+class Error extends Throwable{}
+class Exception extends Throwable{}
+class InterruptedException extends Exception{}
+class RuntimeException extends Exception{}
+class NullPointerException extends RuntimeException{}
+class ArrayIndexOutOfBoundsException extends RuntimeException{}
+
+LANZAR UNA EXCEPCIÓN
+
+EXCEPCIÓN MARCADA: Es la que está dada por default en Java.
+
+package com.perezcasallas;
+
+class Amount {
+	private String currency;
+	private int amount;
+
+	public Amount(String currency, int amount) {
+		super();
+		this.currency = currency;
+		this.amount = amount;
+	}
+
+	public void add(Amount that) throws Exception {
+		if (!this.currency.equals(that.currency)) {
+			throw new RuntimeException("Currencies Don't Match " + this.currency + " & " + that.currency); // Lanzar una
+																										// excepción
+		}
+		this.amount = this.amount + that.amount;
+	}
+
+	@Override
+	public String toString() {
+		return amount + " " + currency;
+	}
+}
+
+public class ThrowingExceptionRunner {
+
+	public static void main(String[] args) throws Exception {
+		Amount amount1 = new Amount("USD", 10);
+		Amount amount2 = new Amount("EUR", 20);
+		amount1.add(amount2);
+		System.out.println(amount1);
+	}
+
+}
+
+EXCEPCIÓN PERSONALIZADA: Es la que yo puedo crear.
+package com.perezcasallas;
+
+class Amount {
+	private String currency;
+	private int amount;
+
+	public Amount(String currency, int amount) {
+		super();
+		this.currency = currency;
+		this.amount = amount;
+	}
+
+	public void add(Amount that) throws CurrenciesDoNotMathException {
+		if (!this.currency.equals(that.currency)) {
+			// throw new RuntimeException("Currencies Don't Match " + this.currency + " & "
+			// + that.currency); // Lanzar una
+			throw new CurrenciesDoNotMathException("Currencies Don't Match " + this.currency + " & " + that.currency);
+		}
+		this.amount = this.amount + that.amount;
+	}
+
+	@Override
+	public String toString() {
+		return amount + " " + currency;
+	}
+}
+
+class CurrenciesDoNotMathException extends Exception {
+	public CurrenciesDoNotMathException(String msg) {
+		super(msg);
+	}
+}
+
+public class ThrowingExceptionRunner {
+
+	public static void main(String[] args) throws CurrenciesDoNotMathException {
+		Amount amount1 = new Amount("USD", 10);
+		Amount amount2 = new Amount("EUR", 20);
+		amount1.add(amount2);
+		System.out.println(amount1);
+	}
+
+}
+
+Un ejemplo con Excepción Runtime.
+package com.perezcasallas;
+
+class Amount {
+	private String currency;
+	private int amount;
+
+	public Amount(String currency, int amount) {
+		super();
+		this.currency = currency;
+		this.amount = amount;
+	}
+
+	public void add(Amount that){
+		if (!this.currency.equals(that.currency)) {
+			// throw new RuntimeException("Currencies Don't Match " + this.currency + " & "
+			// + that.currency); // Lanzar una
+			throw new CurrenciesDoNotMathException("Currencies Don't Match " + this.currency + " & " + that.currency);
+		}
+		this.amount = this.amount + that.amount;
+	}
+
+	@Override
+	public String toString() {
+		return amount + " " + currency;
+	}
+}
+
+class CurrenciesDoNotMathException extends RuntimeException {
+	public CurrenciesDoNotMathException(String msg) {
+		super(msg);
+	}
+}
+
+public class ThrowingExceptionRunner {
+
+	public static void main(String[] args) throws CurrenciesDoNotMathException {
+		Amount amount1 = new Amount("USD", 10);
+		Amount amount2 = new Amount("EUR", 20);
+		amount1.add(amount2);
+		System.out.println(amount1);
+	}
+
+}
+
+FORMA SIMPLIFICADA DE MANEJAR EXCEPCIONES:
+
+package com.perezcasallas;
+
+import java.util.Scanner;
+
+public class TryWithResourcesRunner {
+
+	public static void main(String[] args) {
+
+		try (Scanner scanner = new Scanner(System.in)) {
+			int[] numbers = { 7, 12, 20, 24 };
+			int number = numbers[5];
+		}
+	}
+}
+
+*Este tipo de try aplica para metodos que su definición original son Closeable
+
+MANEJO DE MÚLTIPLES EXCEPCIONES EN UN MISMO BLOQUE:
+
+try{
+	//Code
+} catch (IOException | SQLException ex){
+	ex.printStackTrace();
+}
+
+
+MEJORES PRÁCTICAS:
+
+*Nunca ocultar excepciones.
+*No usarlo para control de flujos.
+*Pensar en el usuario.
+*Pensar en el Equipo de Soporte.
+*Pensar en le metodo de llamada.
+*Tener manejo de excepciones global.
+
+CONCEPTOS:
+
+EXCEPTION: Una interrupción en el flujo del programa debido a un error o evento excepcional
+
+EXCEPTION HANDLING: Gestionar errores y excepciones en Java
+
+NullPointerException: Error causado al intentar operar en un objeto nulo
+
+EXCEPTION CLASS: Una clase en Java que representa errores y eventos excepcionales.
+
+printStackTrace(): Muestra un mensaje de error y su seguimiento en Java
+
+try-catch: Mecanismo para manejar errores y excepciones durante la ejecución del programa.
+
+finally: El código en el bloque finalmente casi siempre se ejecuta (caso de uso: limpiar recursos)
+
+RuntimeException: Tipo de excepción que no necesita ser manejada explícitamente
+
+Custom Exception: Una clase de excepción definida por el usuario
+
+Throwable: Es la clase raíz de la jerarquía de excepciones de Java. Tanto Exception como RuntimeException son subclases de Throwable. 
+
+Throws Keyword: El propósito de la palabra clave throws en Java es declarar que un método puede generar un tipo específico de excepción. 
+                Se utiliza en la firma del método para indicar que el método podría generar una excepción del tipo especificado durante su ejecución. 
+				Esta declaración ayuda a informar a la persona que llama del método sobre las posibles excepciones que deben manejarse o propagarse más.
+
+Las excepciones no comprobadas en Java incluyen RuntimeException y sus subclases. 
+A diferencia de las excepciones marcadas, no es obligatorio que el programador maneje o declare explícitamente las excepciones no marcadas.
+
+Las excepciones marcadas en Java abarcan todas las subclases de Exception, excepto RuntimeException y sus subclases. 
+El compilador verifica estas excepciones durante el proceso de compilación, lo que obliga a los desarrolladores a manejarlas usando un bloque try-catch o 
+declararlas lanzadas usando la palabra clave throws en la firma del método.
+
+La interfaz que un recurso debe implementar para ser compatible con la declaración try-with-resources es AutoCloseable. 
+La interfaz AutoCloseable proporciona un método único, close(), que la declaración try-with-resources invoca automáticamente para liberar o cerrar el recurso cuando ya no es necesario.
+
+El propósito de la declaración try-with-resources en Java es administrar automáticamente los recursos que implementan la interfaz AutoCloseable. 
+Garantiza que los recursos declarados se cierren o liberen adecuadamente, incluso en presencia de excepciones, sin requerir bloques finalmente explícitos.

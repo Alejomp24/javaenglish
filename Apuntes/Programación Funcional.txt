@@ -1,0 +1,269 @@
+jshell> List<Integer> list = List.of(7, 12, 24, 87)
+list ==> [7, 12, 24, 87]
+
+jshell> list.stream().forEach(
+   ...> element -> System.out.println(element)
+   ...> )
+7
+12
+24
+87
+
+jshell> list.stream().filter(element -> element%2 == 1).forEach(			//Traer los impares
+   ...> element -> System.out.println(element)
+   ...> )
+7
+87
+                             |---	Lambda Expression	---------|
+jshell> list.stream().filter(element -> element%2 == 0).forEach(			//Traer los pares
+   ...> element -> System.out.println(element)
+   ...> )
+12
+24
+
+
+stream() -> Es una fuente de objetos
+
+También hablamos de:
+ Operaciones Intermedias, son operaciones que resultan secuenciualmente en otra operación, por ejemplo filter(), sorted(), distinct(), map() 
+ Operaciones Terminales, son las que consumen una secuencia y devuelven un resultado, por ejemplo forEach(), reduce()
+ 
+Operaciones Intermedias:
+
+jshell> List<Integer> numbers = List.of(3,5,8,213,45,4,7)
+numbers ==> [3, 5, 8, 213, 45, 4, 7]
+
+
+//Organizar numeros
+jshell> numbers.stream().sorted().forEach(e->System.out.println(e));
+3
+4
+5
+7
+8
+45
+213
+
+
+//Distinct 
+jshell> List<Integer> numbers = List.of(3,5,3,213,45,5,7)
+numbers ==> [3, 5, 3, 213, 45, 5, 7]
+
+jshell> numbers.stream().distinct().forEach(e->System.out.println(e));
+3
+5
+213
+45
+7
+
+jshell> numbers.stream().distinct().sorted().forEach(e->System.out.println(e));
+3
+5
+7
+45
+213
+
+//Map calculando el cuadrado de los numeros
+jshell> numbers.stream().distinct().map(e-> e*e).forEach(e->System.out.println(e));
+9
+25
+45369
+2025
+49
+
+
+//Map calculando el cuadrado de los primeros 10 numeros
+jshell> IntStream.range(1,11).map(e-> e*e).forEach(p->System.out.println(p))
+1
+4
+9
+16
+25
+36
+49
+64
+81
+100
+
+//Convertir a minúsculas usando Map
+jshell> List.of("APPLE", "ANT", "BAT").stream().map(s-> s.toLowerCase()).forEach(p-> System.out.println(p))
+apple
+ant
+bat
+
+//Calcular la longitud de cada palabra usando Map
+jshell> List.of("APPLE", "ANT", "BAT").stream().map(s-> s.length()).forEach(p-> System.out.println(p))
+5
+3
+3
+
+Operaciones Terminales:
+
+//Determinar cual es Maximo valor en una lista
+jshell> List.of(23,12,34,53).stream().max((n1,n2) -> Integer.compare(n1,n2))
+$1 ==> Optional[53]
+
+jshell> List.of(23,87,34,53).stream().max((n1,n2) -> Integer.compare(n1,n2)).get()
+$3 ==> 87
+
+//Determinar cual es Minimo valor en una lista
+jshell> List.of(23,87,34,53).stream().min((n1,n2) -> Integer.compare(n1,n2)).get()
+$4 ==> 23
+
+//Generar como resultado otra lista, ej 1) Generar una lista con numeros impares - 2) Generar una lista con numeros pares
+jshell> List.of(23,12,34,53).stream().filter(e -> e%2==1)	
+$5 ==> [23, 53]
+
+jshell> List.of(23,12,34,53).stream().filter(e -> e%2==0).collect(Collectors.toList())
+$7 ==> [12, 34]
+
+//Generar los cuadrados de los primeros 10 numeros
+jshell> IntStream.range(1,11).map(e -> e*e).boxed().collect(Collectors.toList())
+$8 ==> [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
+OPCIONAL CLASS 
+
+Su objetivo es evitar devolvber valores nulos, es decir, asigna un valor opcional cuando no presenta un resultado exacto
+
+jshell> List.of(23,45,67, 34).stream().filter(e -> e%2==0).max((n1,n2) -> Integer.compare(n1,n2)).orElse(0)
+$10 ==> 0
+
+METHOD REFERENCES
+package com.perezcasallas.functionalprogramming;
+
+import java.util.List;
+import java.util.function.Predicate;
+
+public class MethodReferencesRunner {
+	
+	public static void print(Integer number) {
+		System.out.println(number);
+	}
+	
+	public static boolean isEven(Integer number) {
+		return number % 2 == 0;
+	}
+
+	private static Predicate<? super Integer> createEvenPredicate() {
+		return e -> e % 2 == 0;
+	}
+
+	public static void main(String[] args) {
+
+		// Normal Function Programming
+		List.of("Ant", "Bat", "Cat", "Dog", "Elephant").stream().map(s -> s.length())
+				.forEach(s -> System.out.println(s));
+
+		// Method References
+		List.of("Ant", "Bat", "Cat", "Dog", "Elephant").stream().map(String::length)
+				.forEach(MethodReferencesRunner::print);
+
+		// Normal Function Programming
+		Integer max = List.of(23, 45, 67, 34).stream().filter(e -> e % 2 == 0)
+				.max((n1, n2) -> Integer.compare(n1, n2))
+				.orElse(0);
+		System.out.println(max);
+
+		// Method References, Passing functions to methods
+		Integer max1 = List.of(23, 45, 67, 34).stream().filter(MethodReferencesRunner::isEven).max(Integer::compare)
+				.orElse(0);
+		System.out.println(max1);
+
+		// Storing functions in variables, click derecho dentro de lo que está en la
+		// función filter (e -> e % 2 == 0) ->Refactor->Extract Local
+		// Variable
+		Predicate<? super Integer> evenPredicate = (e -> e % 2 == 0);
+		Integer max2 = List.of(23, 45, 67, 34).stream().filter(evenPredicate).max((n1, n2) -> Integer.compare(n1, n2))
+				.orElse(0);
+		System.out.println(max2);
+
+		// Returning functions from methods, click derecho dentro de lo que está en la
+		// función filter (e -> e % 2 == 0)->Refactor->Extract Method
+		Integer max3 = List.of(23, 45, 67, 34).stream().filter(createEvenPredicate())
+				.max((n1, n2) -> Integer.compare(n1, n2)).orElse(0);
+		System.out.println(max3);
+	}
+}
+
+
+CONCEPTOS
+
+*Functional Programming: Las funciones son como valores, se pueden pasar y devolver.
+
+*El método filter() se utiliza para aplicar una condición a los elementos de la secuencia y conservar solo los que cumplen la condición.
+
+*Una interfaz funcional es una interfaz que especifica un único método abstracto y puede usarse como destino para una expresión lambda o una referencia de método.
+ 
+*Las expresiones Lambda permiten una sintaxis más compacta para definir funciones anónimas en Java. 
+ Todas estas diferencias hacen de las expresiones lambda una poderosa herramienta para la programación funcional.
+ Sintaxis abreviada para definir funciones en Java.
+
+*Method References: Simplifique la creación de expresiones Lambda
+ 
+*Stream: Secuencia de elementos.
+
+*Stream API: Una colección de métodos en Java para procesar flujos de datos de manera funcional.
+
+*El método reduce() se utiliza para combinar los elementos de una secuencia en un solo resultado.
+
+*El método distinct() se utiliza para eliminar elementos duplicados de una secuencia. El método distinct() utiliza el método igual () para comparar los elementos de la secuencia. 
+ Si dos elementos son iguales, sólo uno de ellos se incluirá en la secuencia resultante.
+ 
+*La clase Opcional representa un objeto contenedor que puede contener o no un valor. La clase Opcional se puede utilizar para representar valores nulos en operaciones de flujo. 
+ También se puede utilizar para evitar NullPointerExceptions en operaciones de flujo.
+
+*La operación map() se utiliza para aplicar una función a cada elemento de una secuencia y producir una nueva secuencia con los resultados. La función que se aplica a cada elemento se llama mapeador. 
+ El asignador puede ser una expresión lambda, una referencia de método o un método.
+ 
+*La principal diferencia entre las operaciones intermedias y las operaciones terminales es que las operaciones intermedias devuelven un nuevo flujo, mientras que las operaciones terminales producen un resultado o efecto secundario. 
+ Las operaciones intermedias se pueden encadenar, mientras que las operaciones terminales no se pueden encadenar.
+ 
+*Intermediate Operation: Operaciones de flujo que producen otro flujo como salida, como filtro, mapa y mapa plano.
+
+*Terminal Operation: Transmita operaciones que produzcan un único resultado, como reducir, recopilar y forEach.
+
+https://www.in28minutes.com/flashcard-java-14-functionalprogramming
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

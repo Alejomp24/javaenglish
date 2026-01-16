@@ -1,0 +1,25 @@
+Java 5 New Features:
+*Enhanced For Loop 
+*Generics 
+*Enums
+*Autoboxing
+
+Java 8 New Features:
+*Functional Programming - Lambdas & Streams 
+*Static methods in interface
+
+Java 9 New Features:
+Modularization (Java Platform Module System)
+
+
+Local Variable Type Inference: Declarar variables con tipos inferidos usando var
+
+JShell: Herramienta REPL interactiva para experimentar con código
+
+Private methods in interfaces: Definir métodos privados para reducir la duplicación de código.
+
+Switch Expressions: Utilice la declaración Switch Expressions como expresión para obtener un código más conciso
+
+Text Blocks: Manera legible de declarar literales de cadenas de varias líneas (entre """ y """)
+
+Record Classes: Manera concisa de declarar clases utilizadas principalmente para datos.

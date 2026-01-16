@@ -1,0 +1,48 @@
+Envuelve un tipo de datos y le da una apariencia de objeto.
+Las clases contenedoras son finales e inmutables.
+
+TIPOS.
+Wrapper: Boolean, Byte, Character, Double, Float, Integer, Long, Short
+Primitive: boolean, byte, char, double, float, int, long, short
+
+Es decir cada tipo de dato primitivo tiene una CLASE CONTENEDORA
+
+POR QUÉ LOS WRAPPER CLASS
+Creación a partir de otros tipos de datos
+
+FORMAS DE CREAR INSTANCIAS EN CLASES CONTENEDORAS
+
+jshell> Integer entero1 = new Integer(7);
+|  Warning:
+|  Integer(int) in java.lang.Integer has been deprecated and marked for removal
+|  Integer entero1 = new Integer(7);
+|                    ^------------^
+entero1 ==> 7
+
+jshell> Integer entero2 = Integer.valueOf(12);
+entero2 ==> 12
+
+jshell> Integer entero1 = new Integer("24");
+|  Warning:
+|  Integer(java.lang.String) in java.lang.Integer has been deprecated and marked for removal
+|  Integer entero1 = new Integer("24");
+|                    ^---------------^
+entero1 ==> 24
+
+
+jshell> Integer seven = 7					//Auto Boxing, es decir, en segundo plano Java hace un valueOf()
+seven ==> 7
+
+OTRAS CARACTERÍSTICAS
+
+jshell> Integer.MAX_VALUE
+$2 ==> 2147483647
+
+jshell> Integer.MIN_VALUE
+$3 ==> -2147483648
+
+jshell> Integer.SIZE
+$4 ==> 32
+
+jshell> Integer.BYTES
+$5 ==> 4

@@ -1,0 +1,85 @@
+IF / ELSE
+package com.perezcasallas;
+
+public class IfStatementRunner {
+
+	public static void main(String[] args) {
+		int i = 12;
+		if (i == 24) {
+			System.out.println("i = 24");
+		} else if (i == 12) {
+			System.out.println("i = 12");
+		} else {
+			System.out.println("i != 24 and !=12");
+		}
+	}
+}
+
+package com.perezcasallas;
+
+public class IfStatementRunner {
+
+	public static void main(String[] args) {
+		int i = 24;
+		if (i > 20) {
+			if (i < 20) {
+			System.out.println("i < 20");
+			} else {
+			System.out.println("Who am I?");
+			}
+		}
+	}
+}
+
+SWITCH
+package com.perezcasallas;
+
+public class IfStatementRunner {
+
+	public static void main(String[] args) {
+		int i = 12;
+		switch (i) {
+		case 24:
+			System.out.println("i = 24");
+			break;
+		case 12:
+			System.out.println("i = 12");
+			break;
+		case 7:
+			System.out.println("i = 7");
+			break;
+		default:
+			System.out.println("i is diferent to 7, 12 , 24");
+			break;
+		}
+	}
+}
+
+Para Switch solo se pueden usar los tipos de datos CHAR, INT, BYTE, SHORT, para el resto de tipos de datos arroja error.
+Dentreo del Case no se puede tener una condición, por ejemplo case number > 5
+
+TERNARIO
+Simbolizado por el signo ?, por ejemplo
+
+jshell> boolean isEven;
+isEven ==> false
+
+jshell> int i = 7
+i ==> 7
+
+jshell> isEven = (i%2==0 ? true : false )
+isEven ==> false
+
+jshell> int i = 8
+i ==> 8
+
+jshell> isEven = (i%2==0 ? true : false )
+isEven ==> true
+
+jshell> i = 8
+i ==> 8
+
+jshell> String even = ( i%2==0 ? "YES" : "NO" )
+even ==> "YES"
+
+Aquí lo que veo es que si la condición se cumple entonces responde con el primer argumento despues de ?, de lo contrario responde con elargumento que está después de los :

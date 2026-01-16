@@ -1,0 +1,94 @@
+* Thinking about Objects
+* Class
+* Object
+* Data (State)
+* Actions (Behaviour)
+
+En la programación orientada a objetos:
+- Tratamos de pensar en términos de objetos
+- Qué tipo de datos pueden contener
+- Cuáles son las operaciones o cuáles son las acciones que se pueden realizar sobre estos objetos.
+- Una Clase encapsula la abstracción de datos y procedimientos que se requieren para describir el
+  contenido y comportamiento de alguna entidad del mundo real.
+- Un objeto encapsula datos (atributos) y los métodos (operaciones, métodos o servicios) que
+  manipulan esos datos.
+
+Por ejemplo, una persona quiere viajar de un lugar a otro, pensemos en las cosas que pueden envover este caso:
+
+Aeroplane
+	airline, make, type, position			//data
+	takeoff(), land(), cruise()				//actions
+
+AirHostess	
+	name, address							//data
+	wish(), serve()							//actions
+
+Passenger
+	name, address							//data
+	takeCab(), checkin(), walk(), smile()	//actions
+
+Otro ejemplo:
+
+	class Planet{							//class/templete
+		name, location, distanceFromSun		//data/state/fields
+		revolve(), rotate()					//actions/behaviour/methods
+	}
+	
+	Planet earth = new Plante();			//object/instance of a class
+	Planet venus = new Planet();			//object/instance of a class
+
+CLASE
+Define un modelo para crear objetos que comparten propiedades y comportamientos comunes
+Una clase debe tener atributos y métodos.
+
+OBJETO
+Una instancia de una clase que contiene datos y comportamiento definido por su clase.
+
+ESTADO DE UN OBJETO
+Se refiere a los valores de datos actuales que tiene un objeto.
+
+COMPORTAMIENTO DE UN OBJETO
+Se refiere a las acciones que se pueden realizar en un objeto.
+
+
+EJERCICIO ONLINE SHOPPING SYSTEM
+
+Customer
+	name, address
+	login(), logout(), selectProduct(product)
+
+ShoppingCart
+	items
+	add(item), remove(item)
+
+Product
+	name, proce, quantityAvailable
+	order(), changePrice()
+	
+EJERCICIO PERSON
+
+Person
+	name, address, hobbies, work
+	walk(), run(), sleep(), eat(), drink()
+
+ENCAPSULACIÓN.
+La técnica de combinar datos y código en una sola unidad, protegiendo los datos de ser accedidos o modificados directamente desde fuera de la unidad.
+Todas las demás clases deben acceder a los datos a través del comportamiento de la clase, a través de los métodos que ofrece la clase.
+
+ABSTRACCIÓN
+La técnica de ocultar detalles de implementación complejos y presentar una vista simplificada al usuario
+
+VARIABLE PRIVADA O MEMBRO
+Cuando hacemos que una variable sea privada, lo que sucedería es que no se puede acceder a ella desde fuera de esta clase.
+
+GETTERS
+Métodos utilizados para recuperar los valores de los campos privados de una clase.
+
+SETTERS
+Métodos utilizados para establecer los valores de los campos privados de una clase.
+
+
+CONSTRUCTOR
+Un método especial que inicializa los objetos cuando se crean.
+El constructor debe tener el mismo nombre de las Clase.
+

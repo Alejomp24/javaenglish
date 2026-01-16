@@ -1,0 +1,153 @@
+DEFINICIONES
+	Metodo: Un bloque de código con nombre que realiza una tarea específica y se puede llamar varias veces.
+	Clase: un plan para crear objetos en Java
+	Objeto: una instancia de una clase Java que tiene una identidad, comportamiento y estado 
+
+SINTAXIS METODO
+ReturnType nameOfTheMethod(Type argumentName){
+  //Body of the method, What do we want to do in the method?
+}
+*El argumentName vendría siendo los parámetros de entrada del metodo, entradas proporcionadas a un método durante la llamada al método
+*El ReturnType vendría siendo al parámetro de salida del metodo, el tipo de datos del valor devuelto por un método Java
+	- Void: un tipo de devolución que indica que un método no devuelve un valor
+
+jshell> void sayHelloWorldTwice(){
+   ...>     System.out.println("Hola Eliam");
+   ...>     System.out.println("Hola Eliam");
+   ...> }
+|  created method sayHelloWorldTwice()
+
+*El nombre del metodo y el return type no pueden comenzar con numero
+
+ReturnType nameOfTheMethod(){
+  //What do we want to do in the method?
+}
+
+void sayHelloEliam(int noOfTimes){
+	 //Body of method
+}
+
+|  created method sayHelloEliam(int)
+
+
+
+EJECUCIÓN SINTAXIS 1
+jshell> sayHelloWorldTwice()
+Hola Eliam
+Hola Eliam
+
+EJECUCIÓN SINTAXIS 2
+jshell> sayHelloEliam()
+|  Error:
+|  method sayHelloEliam in class  cannot be applied to given types;
+|    required: int
+|    found:    no arguments
+|    reason: actual and formal argument lists differ in length
+|  sayHelloEliam()
+|  ^-----------^
+
+jshell> sayHelloEliam(1)
+
+EDITAR METODOS
+*Para guardar lo que se ha trabajado: /save backup.txt
+
+jshell> /edit sayHelloEliam
+|  modified method sayHelloEliam()
+*Se edita el metodo desde un Java Pad
+
+VER METODOS CREADOS
+jshell> /methods
+|    void sayHelloEliam()
+
+VER EL CONTENIDO DE UN METODO EN ESPECÍFICO
+jshell> /list sayHelloEliam
+
+   3 : void sayHelloEliam(){
+           System.out.println("Hola Eliam Mateo Perez Munoz");
+       }
+	   
+jshell> /list sayHelloEliam
+
+   3 : void sayHelloEliam(int noOfTimes){
+        System.out.println(noOfTimes);
+       }
+	   
+jshell> /list sayHelloEliam
+
+   7 : void sayHelloEliam(int noOfTimes){
+        for(int i=1; i<=noOfTimes; i++){
+                System.out.println("Hello Eliam");
+        }
+       }
+	   
+EJERCICIO IMPRIMIR NUMERO DEL 1 HASTA N 
+jshell> /list printNumbers
+
+   1 : void printNumbers(int n){
+           for(int i=1; i<=n; i++) {
+               System.out.println(i);
+           }
+       }
+
+EJECICIO IMPRIMIR EL CUDRADO DEL 1 HASTA N 
+void printSquaresOfNumbers(int n){
+    for(int i=1; i<=n; i++){
+        System.out.println(i*i);
+    }
+}
+
+EJERCICIO TABLA DE MULTIPLICAR
+void printMultiplicationTable(){
+    for(i=1; i<=10; i++){
+        System.out.printf("%d * %d = %d", 6, i, 6*i).println();
+    }
+}
+
+void printMultiplicationTable(int number){
+     for(i=1; i<=10; i++){
+         System.out.printf("%d * %d = %d", number, i, number*i).println();
+     }
+}
+
+MULTIPLES PARÁMETROS
+jshell> void printSumOfTwoNumbers(int a, int b){
+   ...>     System.out.printf("%d + %d = %d", a, b, a+b).println();
+   ...> }
+|  created method printSumOfTwoNumbers(int,int)
+
+jshell> printSumOfTwoNumbers(12, 24)
+12 + 24 = 36
+
+jshell> int printSumOfTwoNumbers(int a, int b){
+   ...>     int sum = a+b;
+   ...>     return sum;
+   ...> }
+|  created method printSumOfTwoNumbers(int,int)
+
+FORMAS DE INVOCAR EL METODO
+
+jshell> printSumOfTwoNumbers(7, 12)
+$2 ==> 19
+
+jshell> int sum = printSumOfTwoNumbers(80, 28)
+sum ==> 108
+
+EJERCICIO SUMAR 3 NUMEROS
+jshell> int sumThreeNumbers(int n1, int n2, int n3){
+   ...>     int sum = n1 + n2 + n3;
+   ...>     return sum;
+   ...> }
+|  created method sumThreeNumbers(int,int,int)
+
+jshell> sumThreeNumbers(27, 38, 10)
+$6 ==> 75
+
+EJERCICIO RETORNA VALOR DEL TERCER ANGULO
+jshell> int thirdAngle(int a1, int a2){
+   ...>     int angle = 180 - (a1 + a2);
+   ...>     return angle;
+   ...> }
+|  created method thirdAngle(int,int)
+
+jshell> thirdAngle(45, 45)
+$8 ==> 90

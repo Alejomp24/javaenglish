@@ -1,0 +1,39 @@
+//El WHILE es muy parecido al IF en su sintaxis y la diferencia es que el WHILE se ejecuta varias veces mientras se cumpla la condición.
+
+int i = 0
+while (i<=24) {
+	System.out.println(i);
+	i++;
+}
+
+//Si no se especifica el incremento el ciclo queda pegado. (en loop infinito)
+
+//DO WHILE
+
+do {
+	System.out.println(i + " ");
+	i++;
+} while (i<5)
+
+//La diferencia entre WHILE y DO WHILE es la condición, en el WHILE la condición está de primera y en el DO WHILE la condición está de última.
+//Por ejemplo:
+jshell> int i = 10
+i ==> 10
+
+jshell> while (i < 5) {
+   ...>     System.out.print(i + " ");
+   ...>     i++;
+   ...> }
+
+jshell>	//Como no se cumple la condición no imprime o ejecuta las instrucciones dentro del ciclo
+
+jshell> do {
+   ...>     System.out.print(i + " ");
+   ...>     i++;
+   ...> }while (i < 5)
+10		//Ejecuto las instrucciones dentro del ciclo la primera vez y después de la validación riompió el ciclo
+		//El DO WHILE permite que el código se ejecute al menos una vez
+
+//BREAK & CONTINUE
+//Break, cuando se cumple la condición rompe el ciclo
+//Continue, cuando no se cumple la condición siga ejecutando el ciclo
