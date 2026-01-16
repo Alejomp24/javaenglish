@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;POO-Triangle&apos; to &apos;POO-Rectangle&apos;" description="Rename resource &apos;POO-Triangle&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/POO-Triangle" name="POO-Rectangle" stamp="1691677478357" updateReferences="true"/>
+</session>

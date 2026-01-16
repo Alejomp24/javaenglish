@@ -1,0 +1,10 @@
+package com.perezcasallas;
+
+public class StudentsCollectionRunner {
+
+	public static void main(String[] args) {
+
+
+	}
+
+}

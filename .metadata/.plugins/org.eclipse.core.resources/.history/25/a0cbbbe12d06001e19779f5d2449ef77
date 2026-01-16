@@ -1,0 +1,16 @@
+package com.perezcasallas;
+
+public class StudentRunner {
+
+	public static void main(String[] args) {
+		int[] marks = { 99, 98, 100 };
+		Student student = new Student("Eliam", marks);
+		int number = student.getNumberOfMarks();
+		System.out.println("Number of marks: " + number);
+		int sum = student.getTotalSumOfMarks();
+		System.out.println("Total of marks: " + number);
+		int maximumMark = student.getMaximumMark();
+		int minimumMark = student.getMinimumMark();
+	}
+
+}

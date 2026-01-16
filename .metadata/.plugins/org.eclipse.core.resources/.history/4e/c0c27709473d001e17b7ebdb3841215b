@@ -1,0 +1,17 @@
+package com.perezcasallas;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.ArrayList;
+
+public class StudentsCollectionRunner {
+
+	public static void main(String[] args) {
+		List<Student> students = List.of(new Student(1, "Mario"), new Student(2, "Yolis"), new Student(3, "Eliam"));
+		System.out.println(students);
+		
+		List<Student> studentsAl = new ArrayList<>(students); 
+		Collections.sort(studentsAl);
+	}
+
+}

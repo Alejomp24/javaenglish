@@ -1,0 +1,21 @@
+package com.perezcasallas;
+
+import java.math.BigDecimal;
+
+public class SimpleInterestCalculator {
+	double totalSum;
+	private String principal;
+	private String interest;
+
+	// Constructor
+	public SimpleInterestCalculator(String principal, String interest) {
+		BigDecimal principal = new BigDecimal(principal);
+		BigDecimal interest = new BigDecimal(interest);
+	}
+
+	public double calculateTotalValue(int noOfYears) {
+		// Total Amount = principal + principal * interest * noOfYears;
+		return totalSum = principal + principal * interest * noOfYears;
+	}
+
+}

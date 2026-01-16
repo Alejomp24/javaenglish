@@ -1,0 +1,12 @@
+package com.perezcasallas;
+
+import java.util.List;
+
+public class StudentsCollectionRunner {
+
+	public static void main(String[] args) {
+		List<Student> students = List.of(new Student(1, "Mario"), new Student(2, "Yolis"), new Student(3, "Eliam"));
+		System.out.println(students);
+	}
+
+}

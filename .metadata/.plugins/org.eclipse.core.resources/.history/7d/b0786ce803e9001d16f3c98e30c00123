@@ -1,0 +1,17 @@
+package com.perezcasallas;
+
+public class SimpleInterestCalculator {
+	double totalSum;
+	private double principal;
+	private double interest;
+	//Constructor
+	public SimpleInterestCalculator(double principal, double interest) {
+		this.principal = principal;
+		this.interest = interest; 		
+	}
+	public double calculateTotalValue(int noOfYears) {
+		// Total Amount = principal + principal * interest * noOfYears;
+		return totalSum = principal + principal * interest * noOfYears;
+	}
+
+}

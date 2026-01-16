@@ -1,0 +1,79 @@
+CONCLUSIONES
+
+* Las CLASES deben tener atributos y metodos.
+* Se sugiere tener una "CLASE" MAIN (public static void main(String[] args) en ella:
+	- Puedo crear objetos asignándole valores a sus atributos.
+	- Puedo invocar los métodos para un objeto asociados a una clase
+* Estoy viendo que:
+	- No se permiten crear objetos fuera de public static void main(String[] args) {
+	- No se permiten usar metodos fuera de public static void main(String[] args) {
+	
+* Por ejemplo en la clase Vehiculo, puedo crear objetos dentro de ella si pongo la clase como MAIN public static void main(String[] args) {
+* En el Proyecto puedo tener varias "CLASES MAIN", pero al ejecutarse, Eclipse me solicita cuál CLASE quiero ejecutar. 
+* Veo que al instanciar objetos todo debe ir dentro de public static void main(String[] args) {, es decir:
+	- Va la creación del objeto
+	- Va la ejecución de un metodo
+	- Va la impresión del resultado 
+	
+	// Metodos para solicitar información
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+	public void setTransmision(String transmision) {
+		this.transmision = transmision;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public void setPrecio(int precio) {
+		if (precio > 0) {
+			this.precio = precio;
+		}
+	}
+	
+	public void setCilindraje(int cilindraje) {
+		this.cilindraje = cilindraje;
+	}
+	
+	public void setUnidadesDisponibles(int unidadesDisponibles) {
+		if (unidadesDisponibles > 0) {
+			this.unidadesDisponibles = unidadesDisponibles;
+		}
+	}
+	
+			// ATRIBUTOS
+		// Atributos del Objeto vdrive
+		vdrive.setModelo("V-Drive");
+		vdrive.setTransmision("Automática");
+		vdrive.setColor("Brown");
+		vdrive.setCilindraje(1600);
+		vdrive.setPrecio(80990000);
+		vdrive.setUnidadesDisponibles(223);
+
+		// Atributos del Objeto versa
+		versa.setModelo("Versa");
+		versa.setTransmision("Mecánica");
+		versa.setColor("Silver");
+		versa.setCilindraje(1600);
+		versa.setPrecio(88990000);
+		versa.setUnidadesDisponibles(250);
+
+		// Atributos del Objeto sentra
+		sentra.setModelo("Sentra");
+		sentra.setTransmision("Automática");
+		sentra.setColor("Red");
+		sentra.setCilindraje(2000);
+		sentra.setPrecio(118990000);
+		sentra.setUnidadesDisponibles(420);
+
+		// Atributos del Objeto qashqai
+		qashqai.setModelo("Qashqai");
+		qashqai.setTransmision("Mecánica");
+		qashqai.setColor("Blue");
+		qashqai.setCilindraje(2400);
+		qashqai.setPrecio(146990000);
+		qashqai.setUnidadesDisponibles(230);
+	
